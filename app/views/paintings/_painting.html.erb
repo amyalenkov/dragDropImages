@@ -1,0 +1,8 @@
+<div class="painting">
+  <h3 class="name"><%= painting.name %></h3>
+  <%= link_to image_tag(painting.image_url(:thumb), class: 'dragImg ui-widget-content'), painting if painting.image? %>
+  <div class="actions">
+    <%= link_to "edit", edit_painting_path(painting) %> |
+    <%= link_to "remove", painting, :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+</div>
