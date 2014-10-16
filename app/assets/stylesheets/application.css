@@ -15,5 +15,5 @@
 #draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0;}
 #droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; border-style: solid;}
 #center{margin:0 auto;}
-#div_template1{margin:0 auto; border-style: solid}
-.droppableImg{margin:0 auto; border-style: solid}
+/*#div_template1{margin:0 auto; border-style: solid}*/
+.droppableImg{ border-style: solid}

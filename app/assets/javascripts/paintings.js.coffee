@@ -18,6 +18,6 @@ jQuery ->
         progress = parseInt(data.loaded / data.total * 100, 10)
         data.context.find('.bar').css('width', progress + '%')
     done: (e, data) ->
-      $('img').attr('class', 'dragImg ui-widget-content')
+      $('img').attr('class', 'dragImg ui-widget-content zoom')
       $(".dragImg").draggable({revert: true});
 

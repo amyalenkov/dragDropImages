@@ -10,12 +10,16 @@
   <%= f.file_field :image, multiple: true, name: "painting[image]" %>
 <% end %>
 
-<div id="center" align="center">
+<div id="center" >
   <p1>Templates</p1>
   <div>
     <button class="templates_buttons" id="template1">Template1</button>
     <button class="templates_buttons" id="template2">Template2</button>
     <button class="templates_buttons" id="template3">Template3</button>
+    <img src="images/pl.gif" onclick="zoom_in()" style="vertical-align: top; cursor: pointer" border="0" height="29" width="25">
+    <img src="images/mn.gif" onclick="zoom_out()" style="vertical-align: top; cursor: pointer" border="0" height="29" width="25">
+    <img src="images/mn.gif" onclick="delete_img()" style="vertical-align: top; cursor: pointer" border="0" height="29" width="25">
+
   </div>
   <%=render 'templates/template1' %>
   <%=render 'templates/template2' %>
