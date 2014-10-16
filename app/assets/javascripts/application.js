@@ -29,29 +29,11 @@ $(document).ready(function () {
     $(".droppableImg").droppable({
         drop: function (event, ui) {
             var src = ui.draggable.context.src
-            var width = $(this).width()
-            var height = $(this).height()
-            var img = "'<img alt='Images' id='img_"+countImg+"' style='cursor: move; display: inline-block;overflow: hidden '" +
-            " src='" + src + "' width='" + width + "' height='" + height + "' >'"
-            countImg++;
-//            $(this).append(img)
-//            var canvas = $(this).children('canvas')[0];
-            var y = $(this).css("margin-top").replace("px", "");
-            var x = $(this).css("margin-left").replace("px", "");
-            console.log('x '+x)
-            console.log('y '+y)
+            countImg++;;
+            var x = $(this).attr("x")
+            var y = $(this).attr("y")
             var canvas = document.getElementById('111');
-//            var imageObj = new Image();
-//            imageObj.onload = function() {
-//                context.drawImage(imageObj, 0, 0, width,height);
-//            };
-//            imageObj.src = src
-            var yy = parseInt(400) + parseInt(y) - parseInt(x);
-            var xx = parseInt(x)
-            console.log('yy '+yy)
-            console.log('xx '+xx)
-
-            drawImage(canvas, src, 200,200, width,height)
+            drawImage(canvas, src, x, y, width,height)
         }
     });
     $(".templates_buttons").button()
@@ -110,7 +92,7 @@ function clear(context, canvas) {
 
 function drawImage(canvas, src, x, y, w, h) {
     var context = canvas.getContext('2d');
-    clear(context,canvas);
+//    clear(context,canvas);
     context.save(); //as we now keep track outselves of angle/zoom due to
     //translation, we can use save/restore
 //    console.log(currentScale)

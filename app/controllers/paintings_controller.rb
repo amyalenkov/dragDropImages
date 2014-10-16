@@ -1,6 +1,8 @@
 class PaintingsController < ApplicationController
+  # require 'app/mailers/image_mailer'
   def index
     @paintings = Painting.all
+    ImageMailer.welcome_email('stmy999@gmail.com').deliver
   end
 
   def show
