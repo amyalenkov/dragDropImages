@@ -24,15 +24,33 @@ $(document).ready(function () {
     var draggableOptions = {
         revert: true
     }
-    countImg = 0
+    $('#ajaxBusy').hide();
+    $('#sendEmail').click(function(){
+        $('#ajaxBusy').show();
+        var emailValue = $('#email').val()
+        var canvasSrc = document.getElementById('canvas').toDataURL();
+        $.ajax({
+            url: 'paintings/sendEmail',
+            type: 'POST',
+            data: {email: emailValue,
+                    srcImage: canvasSrc}
+        }).success(function(){
+            $('#ajaxBusy').hide();
+            alert('Email delivered success')
+        }).error(function(){
+            alert('Email not delivered. Check email and try again.')
+            $('#ajaxBusy').hide();
+        })
+    })
     $(".dragImg").draggable(draggableOptions);
     $(".droppableImg").droppable({
         drop: function (event, ui) {
             var src = ui.draggable.context.src
-            countImg++;;
             var x = $(this).attr("x")
             var y = $(this).attr("y")
-            var canvas = document.getElementById('111');
+            var width = $(this).width()
+            var height = $(this).height()
+            var canvas = document.getElementById('canvas');
             drawImage(canvas, src, x, y, width,height)
         }
     });
@@ -46,7 +64,7 @@ $(document).ready(function () {
 });
 var zoom = 50;
 function zoom_in(){
-    var canvas = document.getElementById('111');
+    var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     context.scale(2,2)
     i = i;
@@ -64,7 +82,7 @@ var currentScale = 1;
 var i = 1;
 var hw = 0;
 function zoom_out(){
-    var canvas = document.getElementById('111');
+    var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
 
     i = i;
@@ -80,7 +98,7 @@ function zoom_out(){
 
 function delete_img(){
     console.log('delete_img')
-    var canvas = document.getElementById('111');
+    var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
     clear(context, canvas)
 }
@@ -92,14 +110,7 @@ function clear(context, canvas) {
 
 function drawImage(canvas, src, x, y, w, h) {
     var context = canvas.getContext('2d');
-//    clear(context,canvas);
     context.save(); //as we now keep track outselves of angle/zoom due to
-    //translation, we can use save/restore
-//    console.log(currentScale)
-//    context.scale(currentScale, currentScale);
-//    context.rotate(currentAngle * Math.PI / 180);
-//    context.drawImage(image, -image.width / 2, -image.width / 2);
-//
     var imageObj = new Image();
     imageObj.onload = function() {
         context.drawImage(imageObj, x, y, w, h);
@@ -118,7 +129,7 @@ function getMousePos(canvas, evt) {
         y: evt.clientY - rect.top
     };
 }
-canvas = document.getElementById('111');
+canvas = document.getElementById('canvas');
 canvas.onmousedown = function (e) {
     var pos = getMousePos(canvas, e);
     startX = pos.x;  //store current position

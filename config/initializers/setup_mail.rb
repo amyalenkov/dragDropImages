@@ -3,7 +3,7 @@ ActionMailer::Base.smtp_settings = {
     port: 587,
     domain: 'betterlabs.net',
     user_name: 'stmy999@gmail.com',
-    password: 'Gdz55_ddf12connection refused connect(2)',
+    password: 'Gdz55_ddf12',
     authentication: 'plain',
     enable_starttls_auto: true
 }
