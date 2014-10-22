@@ -17,18 +17,53 @@
 //= require jquery.ui.all
 //= require jquery
 //= require_tree .
+//= require fabric
 $(document).ready(function () {
-    $(".clear_div").hide()
-    $(".template_div").hide()
-    $("#div_template1").show()
 
-    var draggableOptions = {
-        revert: true
+    var canvas = new fabric.Canvas('canvas');
+    function onObjectSelected(e) {
+        $('#opacity').val(canvas.getActiveObject().getOpacity())
     }
-    $('#ajaxBusy').hide();
+    canvas.on('object:selected', onObjectSelected);
+    $(".dragImg").click(function(){
+//        var src = $(this).attr('id');
+//        var imgElement = $("img[src='"+src+"']")[0];
+//        fabric.Image.fromURL(src, function(oImg) {
+//            oImg.setTop(100);
+//            oImg.setLeft(100);
+//            oImg.setWidth(100);
+//            oImg.setHeight(100);
+//            canvas.add(oImg);
+//        });
+        var imgInstance = new fabric.Image(this, {
+            left: 100,
+            top: 100,
+            angle: 0,
+            width: 100,
+            height: 100
+        });
+        canvas.add(imgInstance);
+    });
+    $('#opacity').on('change', function(){
+        var activeObject = canvas.getActiveObject();
+        if(canvas.getActiveObject() == null){
+            alert('Select any image')
+        }
+        else{
+            activeObject.setOpacity($(this).val());
+        }
+    });
+    $('#deleteImage').click(function(){
+        var activeObject = canvas.getActiveObject();
+        if(canvas.getActiveObject() == null){
+            alert('Select any image')
+        }
+        else{
+            canvas.remove(activeObject);
+        }
+    });
     $('#sendEmail').click(function(){
-        $('#ajaxBusy').show();
-        var emailValue = $('#email').val()
+        var emailValue = $('#email').val();
         var canvasSrc = document.getElementById('canvas').toDataURL();
         $.ajax({
             url: 'paintings/sendEmail',
@@ -36,62 +71,36 @@ $(document).ready(function () {
             data: {email: emailValue,
                     srcImage: canvasSrc}
         }).success(function(){
-            $('#ajaxBusy').hide();
             alert('Email delivered success')
         }).error(function(){
-            alert('Email not delivered. Check email and try again.')
-            $('#ajaxBusy').hide();
+            alert('Email not delivered. Check email and try again.');
         })
-    })
+    });
+
+    var draggableOptions = {
+        revert: true,
+        start: function(e){
+            console.log('start')
+        },
+        stop: function(e){
+            console.log('stop '+ e.element.attr('class'));
+            console.log('stop '+$(this).attr('class'))
+        }
+    };
     $(".dragImg").draggable(draggableOptions);
     $(".droppableImg").droppable({
         drop: function (event, ui) {
-            var src = ui.draggable.context.src
-            var x = $(this).attr("x")
-            var y = $(this).attr("y")
-            var width = $(this).width()
-            var height = $(this).height()
+            var src = ui.draggable.context.src;
+            var x = $(this).attr("x");
+            var y = $(this).attr("y");
+            var width = $(this).width();
+            var height = $(this).height();
             var canvas = document.getElementById('canvas');
-            drawImage(canvas, src, x, y, width,height)
+            drawImage(canvas, src, x, y, width,height);
+            $(this).append( "<img width='100px' height='100px' scr='"+src+"'></img>" );
         }
     });
-    $(".templates_buttons").button()
-        .click(function (event) {
-            var id = "#div_"+ this.id
-            $(".template_div").hide()
-            $(id).show()
-        });
-    $('.clear_div').click(function(){
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        var x = $(this).parent().attr('x')
-        var y = $(this).parent().attr('y')
-        var h = $(this).parent().height()
-        var w = $(this).parent().width()
-        clear(context, canvas, x, y, w, h)
-    })
-    $('.droppableImg').mouseover(function(){
-        console.log($(this).attr('x') +"-"+ $(this).attr('y') + ' enter')
-        $(this).children().show();
-    })
-    $('.droppableImg').mouseleave(function(){
-        console.log($(this).attr('x') +"-"+ $(this).attr('y') + ' leave')
-        $(this).children().hide();
-    })
 });
-
-function delete_img(){
-    console.log('delete_img')
-    var canvas = document.getElementById('canvas');
-    var context = canvas.getContext('2d');
-    clear(context, canvas, 0, 0, canvas.width, canvas.height)
-}
-
-function clear(context, canvas, x, y, w, h) {
-    context.clearRect(x, y, w, h);
-}
-
-
 function drawImage(canvas, src, x, y, w, h) {
     var context = canvas.getContext('2d');
     context.save(); //as we now keep track outselves of angle/zoom due to
@@ -99,7 +108,7 @@ function drawImage(canvas, src, x, y, w, h) {
     imageObj.onload = function() {
         context.drawImage(imageObj, x, y, w, h);
     };
-    imageObj.src = src
+    imageObj.src = src;
 
     context.restore();
 }

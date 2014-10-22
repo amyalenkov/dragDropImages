@@ -1,9 +1,7 @@
 <h1>Painting Gallery</h1>
-<div id="ajaxBusy"><p><img src="wait.GIF"></p></div>
 <div id="paintings">
   <%= render @paintings %>
 </div>
-<div class="clear"></div>
 
 <%= form_for Painting.new do |f| %>
   <%= f.label :image, "Upload images:" %>
@@ -11,27 +9,12 @@
 <% end %>
 
 <div id="center" >
-  <p1>Templates</p1>
   <div>
-    <button class="templates_buttons" id="template1">Template1</button>
-    <button class="templates_buttons" id="template2">Template2</button>
-    <button class="templates_buttons" id="template3">Template3</button>
-    <img src="images/pl.gif" onclick="zoom_in()" style="vertical-align: top; cursor: pointer" border="0" height="29" width="25">
-    <img src="images/mn.gif" onclick="zoom_out()" style="vertical-align: top; cursor: pointer" border="0" height="29" width="25">
-    <img src="images/mn.gif" onclick="delete_img()" style="vertical-align: top; cursor: pointer" border="0" height="29" width="25">
+    <input type="button" id="deleteImage" value="deleteImage"/>
+    <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5">
     <input type="button" id="sendEmail" value="SendEmail"/>
     <input id="email" value="stmy999@gmail.com"/>
   </div>
-  <canvas id="canvas" width="400" height="400" style="background-color: #999999">
+  <canvas id="canvas" width="500" height="500" >
   </canvas>
-  <%=render 'templates/template1' %>
-  <%=render 'templates/template2' %>
-  <%=render 'templates/template3' %>
 </div>
-
-<script id="template-upload" type="text/x-tmpl">
-<div class="upload">
-  {%=o.name%}
-  <div class="progress"><div class="bar" style="width: 0%"></div></div>
-</div>
-</script>
