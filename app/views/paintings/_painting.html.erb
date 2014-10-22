@@ -1,6 +1,5 @@
 <div class="painting">
   <h3 class="name"><%= painting.name %></h3>
-  <input type="button" value="btm" class="imageBtn" id="<%= painting.image_url(:thumb) %>">
   <%=  image_tag(painting.image_url(:thumb), class: 'dragImg ui-widget-content') if painting.image? %>
   <div class="actions">
     <%= link_to "edit", edit_painting_path(painting) %> |

@@ -15,6 +15,7 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require jquery.ui.all
+//=require jquery-fileupload/basic
 //= require jquery
 //= require_tree .
 //= require fabric
@@ -22,7 +23,9 @@ $(document).ready(function () {
 
     var canvas = new fabric.Canvas('canvas');
     function onObjectSelected(e) {
-        $('#opacity').val(canvas.getActiveObject().getOpacity())
+        var activeObject = canvas.getActiveObject();
+        $('#opacity').val(activeObject.getOpacity())
+        canvas.bringToFront(activeObject)
     }
     canvas.on('object:selected', onObjectSelected);
     $(".dragImg").click(function(){
@@ -51,6 +54,7 @@ $(document).ready(function () {
         }
         else{
             activeObject.setOpacity($(this).val());
+            canvas.renderAll();
         }
     });
     $('#deleteImage').click(function(){
