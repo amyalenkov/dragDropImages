@@ -2,6 +2,8 @@ class Painting < ActiveRecord::Base
   attr_accessible :image, :name
   mount_uploader :image, ImageUploader
 
+  belongs_to :user
+
   before_create :default_name
 
   def default_name

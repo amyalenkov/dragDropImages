@@ -1,14 +1,16 @@
-<h1>Painting Gallery</h1>
+<h1>Painting Gallery <%= @user.id %></h1>
 <div id="paintings">
   <%= render @paintings %>
 </div>
 
 <%= form_for Painting.new do |f| %>
   <%= f.label :image, "Upload images:" %>
-  <%= f.file_field :image, multiple: true, name: "painting[image]" %>
+  <%= f.file_field :image, multiple: true, name: "painting[image]",  user_id: @user.id%>
 <% end %>
 
 <div id="center" >
+  <input type="button" id="order" value="Заказать"/>
+  <!--<%= button_to "paintings", action: "order", :id =>"order" %>-->
   <div>
     <input type="button" id="deleteImage" value="deleteImage"/>
     <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5">

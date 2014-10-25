@@ -22,6 +22,7 @@
 $(document).ready(function () {
 
     var canvas = new fabric.Canvas('canvas');
+    var canvasSrc = canvas.toDataURL();
     function onObjectSelected(e) {
         var activeObject = canvas.getActiveObject();
         $('#opacity').val(activeObject.getOpacity())
@@ -65,6 +66,24 @@ $(document).ready(function () {
         else{
             canvas.remove(activeObject);
         }
+    });
+    $('#order').click(function(){
+        canvasSrc = document.getElementById('canvas').toDataURL();
+        console.log('order1111')
+        $.ajax({
+            url: 'payments/order',
+            type: 'POST',
+            data: {
+                srcImage: canvasSrc
+            },
+            success: function(data){
+                console.log('sucess '+data)
+                document.location.href = data
+            },
+            error: function(){
+                console.log('error' )
+            }
+        })
     });
     $('#sendEmail').click(function(){
         var emailValue = $('#email').val();

@@ -1,7 +1,21 @@
 class PaintingsController < ApplicationController
-  # require 'app/mailers/image_mailer'
   def index
-    @paintings = Painting.all
+    @user = get_user(cookies['image_user_token'])
+    @paintings = @user.paintings
+  end
+
+  def get_user(token)
+    if token == nil
+      new_token = User.new_remember_token
+      encrypt = User.encrypt(new_token)
+      user = User.create()
+      user.token = encrypt
+      user.save
+      cookies['image_user_token'] = new_token
+      return user
+    else
+      User.find_by_token(User.encrypt(token))
+    end
   end
 
   def show
@@ -40,8 +54,6 @@ class PaintingsController < ApplicationController
   def sendEmail
     p 'email: ' + params[:email]
     src = params[:srcImage]
-    # p src
-    # p src['data']
     image_data = Base64.decode64(src['data:image/png;base64,'.length .. -1])
     File.open("tmp/image.png", 'wb') do |f|
       f.write image_data
