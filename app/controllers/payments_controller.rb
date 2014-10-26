@@ -1,7 +1,15 @@
 class PaymentsController < ApplicationController
   def order
     p 'order12'
-    href =  '/payments/order'
-    render nothing: true
+  end
+
+  def afterPay
+    p 'pay'
+  end
+
+  def setSrcImage
+    p 'setSrcImage'
+    @srcImage = params[:srcImage]
+    render nothing: true;
   end
 end

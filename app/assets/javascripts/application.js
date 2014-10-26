@@ -69,16 +69,16 @@ $(document).ready(function () {
     });
     $('#order').click(function(){
         canvasSrc = document.getElementById('canvas').toDataURL();
-        console.log('order1111')
+        console.log('order_js')
         $.ajax({
-            url: 'payments/order',
+            url: 'payments/setSrcImage',
             type: 'POST',
             data: {
                 srcImage: canvasSrc
             },
             success: function(data){
-                console.log('sucess '+data)
-                document.location.href = data
+                console.log('sucess1')
+                $('#lnk_more').submit();
             },
             error: function(){
                 console.log('error' )

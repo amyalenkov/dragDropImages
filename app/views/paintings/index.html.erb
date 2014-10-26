@@ -10,7 +10,10 @@
 
 <div id="center" >
   <input type="button" id="order" value="Заказать"/>
-  <!--<%= button_to "paintings", action: "order", :id =>"order" %>-->
+  <div style="display:none;">
+  <%= button_to "Заказать", {controller: "payments",action: "order"},
+                {:remote => false, :id => 'lnk_more'}%>
+  </div>
   <div>
     <input type="button" id="deleteImage" value="deleteImage"/>
     <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5">

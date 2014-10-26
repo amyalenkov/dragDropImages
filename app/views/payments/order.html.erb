@@ -1,1 +1,6 @@
-<h1>order1</h1>
+<h1>order</h1>
+<%= form_tag(controller: "payments" ,action: "afterPay", method: "post") do %>
+    <%= label_tag(:q, "Search for:") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+<% end %>
