@@ -1,6 +1,22 @@
 <h1>order</h1>
 <%= form_tag(controller: "payments" ,action: "afterPay", method: "post") do %>
-    <%= label_tag(:q, "Search for:") %>
+    <%= image_tag (@srcImage) %>
+    <label>Цена : </label><label id="oneCost">1000</label><label>*</label>
+
+    <input type="number" id="count" value="1" min="1">
+    <label>=</label><label id="finalCost">1000</label>
+    <br/>
+    <%= label_tag(:q, "Фамилия Имя") %>
     <%= text_field_tag(:q) %>
-    <%= submit_tag("Search") %>
+    <%= label_tag(:q, "Телефон") %>
+    <%= text_field_tag(:q) %>
+    <%= label_tag(:q, "Email") %>
+    <%= text_field_tag(:q) %>
+    <%= label_tag(:q, "Адрес доставки") %>
+    <%= text_field_tag(:q) %>
+    <%= label_tag(:q, "Почтовый индекс") %>
+    <%= text_field_tag(:q) %>
+    <%= label_tag(:q, "Комментарий") %>
+    <%= text_field_tag(:q) %>
+    <%= submit_tag("Оплатить") %>
 <% end %>

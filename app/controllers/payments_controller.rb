@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   def order
     p 'order12'
+    p @srcImage
   end
 
   def afterPay

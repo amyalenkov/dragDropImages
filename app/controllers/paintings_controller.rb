@@ -2,6 +2,7 @@ class PaintingsController < ApplicationController
   def index
     @user = get_user(cookies['image_user_token'])
     @paintings = @user.paintings
+    # @paintings = Painting.all
   end
 
   def get_user(token)

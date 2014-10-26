@@ -29,7 +29,7 @@ $(document).ready(function () {
         canvas.bringToFront(activeObject)
     }
     canvas.on('object:selected', onObjectSelected);
-    $(".dragImg").click(function(){
+    $('body').on('click','.dragImg',function(){
 //        var src = $(this).attr('id');
 //        var imgElement = $("img[src='"+src+"']")[0];
 //        fabric.Image.fromURL(src, function(oImg) {
@@ -77,7 +77,7 @@ $(document).ready(function () {
                 srcImage: canvasSrc
             },
             success: function(data){
-                console.log('sucess1')
+                console.log('sucess12')
                 $('#lnk_more').submit();
             },
             error: function(){
