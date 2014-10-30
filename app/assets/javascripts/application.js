@@ -15,7 +15,6 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require jquery.ui.all
-//=require jquery-fileupload/basic
 //= require jquery
 //= require_tree .
 //= require fabric
@@ -39,6 +38,7 @@ $(document).ready(function () {
 //            oImg.setHeight(100);
 //            canvas.add(oImg);
 //        });
+        console.log('click 1  ')
         var imgInstance = new fabric.Image(this, {
             left: 100,
             top: 100,
@@ -69,7 +69,7 @@ $(document).ready(function () {
     });
     $('#order').click(function(){
         canvasSrc = document.getElementById('canvas').toDataURL();
-        console.log('order_js')
+        console.log('order')
         $.ajax({
             url: 'payments/setSrcImage',
             type: 'POST',
@@ -77,8 +77,8 @@ $(document).ready(function () {
                 srcImage: canvasSrc
             },
             success: function(data){
-                console.log('sucess12')
-                $('#lnk_more').submit();
+                console.log('sucess')
+                $('.button_to').submit();
             },
             error: function(){
                 console.log('error' )

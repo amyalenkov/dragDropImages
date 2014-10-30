@@ -1,22 +1,23 @@
 <h1>order</h1>
 <%= form_tag(controller: "payments" ,action: "afterPay", method: "post") do %>
-    <%= image_tag (@srcImage) %>
-    <label>Цена : </label><label id="oneCost">1000</label><label>*</label>
-
+    <%= image_tag ("/assets/"+cookies['image_user_token']+".png") %>
+    <!--<label>Цена : </label><label for="cost" id="oneCost">1000</label><label>*</label>-->
+    <label>Цена : </label><%=label(:cost, :title, "1000", id: "oneCost")%><label>*</label>
     <input type="number" id="count" value="1" min="1">
-    <label>=</label><label id="finalCost">1000</label>
+    <!--<label>=</label><label id="finalCost">1000</label>-->
+    <label>=</label><%=label(:cost, :title1, "1000", id: "finalCost")%>
     <br/>
-    <%= label_tag(:q, "Фамилия Имя") %>
-    <%= text_field_tag(:q) %>
-    <%= label_tag(:q, "Телефон") %>
-    <%= text_field_tag(:q) %>
-    <%= label_tag(:q, "Email") %>
-    <%= text_field_tag(:q) %>
-    <%= label_tag(:q, "Адрес доставки") %>
-    <%= text_field_tag(:q) %>
-    <%= label_tag(:q, "Почтовый индекс") %>
-    <%= text_field_tag(:q) %>
-    <%= label_tag(:q, "Комментарий") %>
-    <%= text_field_tag(:q) %>
+    <%= label_tag(:fio, "Фамилия Имя") %>
+    <%= text_field_tag(:fio) %>
+    <%= label_tag(:phone, "Телефон") %>
+    <%= text_field_tag(:phone) %>
+    <%= label_tag(:email, "Email") %>
+    <%= text_field_tag(:email) %>
+    <%= label_tag(:address, "Адрес доставки") %>
+    <%= text_field_tag(:address) %>
+    <%= label_tag(:post, "Почтовый индекс") %>
+    <%= text_field_tag(:post) %>
+    <%= label_tag(:comment, "Комментарий") %>
+    <%= text_field_tag(:comment) %>
     <%= submit_tag("Оплатить") %>
 <% end %>

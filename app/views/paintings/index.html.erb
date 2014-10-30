@@ -11,7 +11,7 @@
 <div id="center" >
   <input type="button" id="order" value="Заказать"/>
   <div style="display:none;">
-  <%= button_to "Заказать", {controller: "payments",action: "order"},
+    <%= button_to "Заказать", {controller: "payments",action: "order"},
                 {:remote => false, :id => 'lnk_more'}%>
   </div>
   <div>
