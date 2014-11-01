@@ -29,16 +29,6 @@ $(document).ready(function () {
     }
     canvas.on('object:selected', onObjectSelected);
     $('body').on('click','.dragImg',function(){
-//        var src = $(this).attr('id');
-//        var imgElement = $("img[src='"+src+"']")[0];
-//        fabric.Image.fromURL(src, function(oImg) {
-//            oImg.setTop(100);
-//            oImg.setLeft(100);
-//            oImg.setWidth(100);
-//            oImg.setHeight(100);
-//            canvas.add(oImg);
-//        });
-        console.log('click 1  ')
         var imgInstance = new fabric.Image(this, {
             left: 100,
             top: 100,
@@ -85,21 +75,6 @@ $(document).ready(function () {
             }
         })
     });
-    $('#sendEmail').click(function(){
-        var emailValue = $('#email').val();
-        var canvasSrc = document.getElementById('canvas').toDataURL();
-        $.ajax({
-            url: 'paintings/sendEmail',
-            type: 'POST',
-            data: {email: emailValue,
-                    srcImage: canvasSrc}
-        }).success(function(){
-            alert('Email delivered success')
-        }).error(function(){
-            alert('Email not delivered. Check email and try again.');
-        })
-    });
-
     var draggableOptions = {
         revert: true,
         start: function(e){

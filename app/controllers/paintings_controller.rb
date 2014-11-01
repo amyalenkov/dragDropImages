@@ -51,15 +51,4 @@ class PaintingsController < ApplicationController
     puts "here in destroy #{params[:id]} - done"
     redirect_to paintings_url, notice: "Painting was successfully destroyed."
   end
-  require 'base64'
-  def sendEmail
-    p 'email: ' + params[:email]
-    src = params[:srcImage]
-    image_data = Base64.decode64(src['data:image/png;base64,'.length .. -1])
-    File.open("tmp/image.png", 'wb') do |f|
-      f.write image_data
-    end
-    ImageMailer.welcome_email(params[:email]).deliver
-    render :nothing => true
-  end
 end
