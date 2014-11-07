@@ -4,7 +4,9 @@
     <label>Цена : </label>
     <%= text_field_tag 'cost', '1000', :readonly => true %>
     <label>*</label>
-    <%= number_field_tag 'count', '1', in: 1...100 %>
+    <%= text_field_tag 'count', '1', :readonly => true %>
+    <input type="button" id="plus_count" value="+"/>
+    <input type="button" id="minus_count" value="-"/>
     <label>=</label>
     <%= text_field_tag 'finalCost', '1000', :readonly => true %>
     <!--<%=label(:cost, :title1, "1000", id: "finalCost")%>-->
