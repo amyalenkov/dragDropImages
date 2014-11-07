@@ -19,7 +19,6 @@
 //= require_tree .
 //= require fabric
 $(document).ready(function () {
-
     var canvas = new fabric.Canvas('canvas');
     var canvasSrc = canvas.toDataURL();
     function onObjectSelected(e) {
@@ -29,6 +28,7 @@ $(document).ready(function () {
     }
     canvas.on('object:selected', onObjectSelected);
     $('body').on('click','.dragImg',function(){
+        console.log('click1')
         var imgInstance = new fabric.Image(this, {
             left: 100,
             top: 100,
@@ -37,6 +37,8 @@ $(document).ready(function () {
             height: 100
         });
         canvas.add(imgInstance);
+        canvas.calcOffset();
+        canvas.renderAll();
     });
     $('#opacity').on('change', function(){
         var activeObject = canvas.getActiveObject();
