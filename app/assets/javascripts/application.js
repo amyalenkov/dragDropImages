@@ -28,7 +28,6 @@ $(document).ready(function () {
     }
     canvas.on('object:selected', onObjectSelected);
     $('body').on('click','.dragImg',function(){
-        console.log('click1')
         var imgInstance = new fabric.Image(this, {
             left: 100,
             top: 100,
@@ -60,8 +59,8 @@ $(document).ready(function () {
         }
     });
     $('#order').click(function(){
+        canvas.deactivateAll().renderAll();
         canvasSrc = document.getElementById('canvas').toDataURL();
-        console.log('order')
         $.ajax({
             url: 'payments/setSrcImage',
             type: 'POST',
@@ -69,7 +68,7 @@ $(document).ready(function () {
                 srcImage: canvasSrc
             },
             success: function(data){
-                console.log('sucess')
+                console.log('success')
                 $('.button_to').submit();
             },
             error: function(){
