@@ -19,6 +19,8 @@
 //= require_tree .
 //= require fabric
 $(document).ready(function () {
+    var WIDTH = 500;
+    var HEIGHT = 500;
     var canvas = new fabric.Canvas('canvas');
     var canvasSrc = canvas.toDataURL();
     function onObjectSelected(e) {
@@ -58,6 +60,53 @@ $(document).ready(function () {
             canvas.remove(activeObject);
         }
     });
+    $('#template1').click(function(){
+        var allObjs = canvas.getObjects();
+        var x = 0;
+        var y = 0;
+        for (var i = 0; i < allObjs.length; i++) {
+            if (i != 4){
+                drawTemplate(canvas,allObjs[i], HEIGHT/2, WIDTH/2, x, y);
+            }
+            if(i%2 == 0){
+                x = x + HEIGHT/2;
+            }else{
+                x = 0;
+                y = y + WIDTH/2;
+            }
+        }
+    });
+
+    $('#template2').click(function(){
+        var allObjs = canvas.getObjects();
+        var x = 0;
+        var y = 0;
+        for (var i = 0; i < allObjs.length; i++) {
+            if (i != 2){
+                drawTemplate(canvas,allObjs[i], HEIGHT/2, WIDTH, x, y);
+            }
+            if(i%2 == 0) {
+                x = 0;
+                y = y + WIDTH / 2;
+            }
+        }
+    });
+
+    $('#template3').click(function(){
+        var allObjs = canvas.getObjects();
+        var x = 0;
+        var y = 0;
+        for (var i = 0; i < allObjs.length; i++) {
+            if (i != 2){
+                drawTemplate(canvas,allObjs[i], HEIGHT, WIDTH/2, x, y);
+            }
+            if(i%2 == 0) {
+                x = x + HEIGHT/2;
+                y = 0;
+            }
+        }
+    });
+
     $('#order').click(function(){
         canvas.deactivateAll().renderAll();
         canvasSrc = document.getElementById('canvas').toDataURL();
@@ -110,4 +159,15 @@ function drawImage(canvas, src, x, y, w, h) {
     imageObj.src = src;
 
     context.restore();
+}
+
+function drawTemplate(canvas,image,height, width, x, y){
+    image.setHeight(height);
+    image.setWidth(width);
+    canvas.calcOffset();
+    canvas.renderAll();
+    image.setTop(y+image.getHeight()/2);
+    image.setLeft(x+image.getWidth()/2);
+    canvas.calcOffset();
+    canvas.renderAll();
 }
