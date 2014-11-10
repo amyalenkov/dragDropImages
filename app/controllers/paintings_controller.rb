@@ -1,22 +1,9 @@
 class PaintingsController < ApplicationController
-  def index
-    @user = get_user(cookies['image_user_token'])
-    @paintings = @user.paintings
-    # @paintings = Painting.all
-  end
 
-  def get_user(token)
-    if token == nil
-      new_token = User.new_remember_token
-      encrypt = User.encrypt(new_token)
-      user = User.create()
-      user.token = encrypt
-      user.save
-      cookies['image_user_token'] = new_token
-      return user
-    else
-      User.find_by_token(User.encrypt(token))
-    end
+  before_filter :get_user
+
+  def index
+    @paintings = @user.paintings
   end
 
   def show
@@ -29,6 +16,8 @@ class PaintingsController < ApplicationController
 
   def create
     @painting = Painting.create(params[:painting])
+    @painting.user = @user
+    @painting.save
   end
 
   def edit
@@ -50,5 +39,21 @@ class PaintingsController < ApplicationController
     @painting.destroy
     puts "here in destroy #{params[:id]} - done"
     redirect_to paintings_url, notice: "Painting was successfully destroyed."
+  end
+
+  private
+
+  def get_user
+    token = cookies['image_user_token']
+    if token == nil
+      new_token = User.new_remember_token
+      encrypt = User.encrypt(new_token)
+      @user = User.create
+      @user.token = encrypt
+      @user.save
+      cookies['image_user_token'] = new_token
+    else
+      @user = User.find_by_token(User.encrypt(token))
+    end
   end
 end
