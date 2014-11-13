@@ -18,9 +18,24 @@
 //= require jquery
 //= require_tree .
 //= require fabric
+function Template(templateDefault, canvas){
+    this.canvas = canvas;
+    this.templateName = templateDefault;
+    this.pushImageInTemplate = function(img){
+        if(this.templateName == 'template1'){
+            setTemplate1(img, this.canvas)
+        }else if(this.templateName == 'template2'){
+
+        }
+    };
+    function setTemplate1(img, canvas){
+        img.setTop(canvas.height/2);
+        img.setLeft(canvas.width/2);
+        img.setScaleY(canvas.height/img.height);
+        img.setScaleX(canvas.width/img.width);
+    }
+}
 $(document).ready(function () {
-    var WIDTH = 500;
-    var HEIGHT = 500;
     var canvas = new fabric.Canvas('canvas');
     var canvasSrc = canvas.toDataURL();
     function onObjectSelected(e) {
@@ -30,14 +45,11 @@ $(document).ready(function () {
     }
     canvas.on('object:selected', onObjectSelected);
     $('body').on('click','.dragImg',function(){
-        var imgInstance = new fabric.Image(this, {
-            left: 100,
-            top: 100,
-            angle: 0,
-            width: 100,
-            height: 100
+        var srcImg = this.src.replace(new RegExp("thumb_", "g"), "");
+        fabric.Image.fromURL(srcImg, function(oImg) {
+            setImageInTemplate(oImg)
+            canvas.add(oImg);
         });
-        canvas.add(imgInstance);
         canvas.calcOffset();
         canvas.renderAll();
     });
@@ -156,7 +168,7 @@ function drawImage(canvas, src, x, y, w, h) {
     imageObj.onload = function() {
         context.drawImage(imageObj, x, y, w, h);
     };
-    imageObj.src = src;
+    imageObj.src = src.replace(new RegExp("thumb_", "g"), "");
 
     context.restore();
 }
@@ -170,4 +182,11 @@ function drawTemplate(canvas,image,height, width, x, y){
     image.setLeft(x+image.getWidth()/2);
     canvas.calcOffset();
     canvas.renderAll();
+}
+
+function setImageInTemplate(img){
+    img.setTop(canvas.height/2);
+    img.setLeft(canvas.width/2);
+    img.setScaleY(canvas.height/img.height);
+    img.setScaleX(canvas.width/img.width);
 }
