@@ -18,25 +18,24 @@
 //= require jquery
 //= require_tree .
 //= require fabric
-function Template(templateDefault, canvas){
-    this.canvas = canvas;
-    this.templateName = templateDefault;
-    this.pushImageInTemplate = function(img){
-        if(this.templateName == 'template1'){
-            setTemplate1(img, this.canvas)
-        }else if(this.templateName == 'template2'){
+//= require template
+var canvas = null;
+var images = null;
+var currentTemplate = null;
 
-        }
-    };
-    function setTemplate1(img, canvas){
-        img.setTop(canvas.height/2);
-        img.setLeft(canvas.width/2);
-        img.setScaleY(canvas.height/img.height);
-        img.setScaleX(canvas.width/img.width);
-    }
-}
 $(document).ready(function () {
-    var canvas = new fabric.Canvas('canvas');
+    canvas = new fabric.Canvas('canvas');
+    currentTemplate = new Template('template1',canvas);
+    images = document.getElementsByClassName('dragImg');
+    [].forEach.call(images, function (img) {
+        img.addEventListener('dragstart', handleDragStart, false);
+        img.addEventListener('dragend', handleDragEnd, false);
+    });
+    var canvasContainer = document.getElementById('canvas-container');
+    canvasContainer.addEventListener('dragenter', handleDragEnter, false);
+    canvasContainer.addEventListener('dragover', handleDragOver, false);
+    canvasContainer.addEventListener('dragleave', handleDragLeave, false);
+    canvasContainer.addEventListener('drop', handleDrop, false);
     var canvasSrc = canvas.toDataURL();
     function onObjectSelected(e) {
         var activeObject = canvas.getActiveObject();
@@ -47,7 +46,7 @@ $(document).ready(function () {
     $('body').on('click','.dragImg',function(){
         var srcImg = this.src.replace(new RegExp("thumb_", "g"), "");
         fabric.Image.fromURL(srcImg, function(oImg) {
-            setImageInTemplate(oImg)
+            currentTemplate.pushImageInTemplate(oImg);
             canvas.add(oImg);
         });
         canvas.calcOffset();
@@ -73,48 +72,45 @@ $(document).ready(function () {
         }
     });
     $('#template1').click(function(){
+        currentTemplate.templateName = 'template1';
         var allObjs = canvas.getObjects();
         var x = 0;
         var y = 0;
         for (var i = 0; i < allObjs.length; i++) {
-            if (i != 4){
-                drawTemplate(canvas,allObjs[i], HEIGHT/2, WIDTH/2, x, y);
-            }
-            if(i%2 == 0){
-                x = x + HEIGHT/2;
-            }else{
-                x = 0;
-                y = y + WIDTH/2;
+            if (i != 4) {
+                if(i%2 == 0){
+                    currentTemplate.pushImageInTemplate(allObjs[i],x,y);
+                    x = x + canvas.width/2;
+                }else{
+                    currentTemplate.pushImageInTemplate(allObjs[i],x,y);
+                    y = y + canvas.height/2;
+                }
             }
         }
     });
 
     $('#template2').click(function(){
+        currentTemplate.templateName = 'template2';
         var allObjs = canvas.getObjects();
         var x = 0;
         var y = 0;
         for (var i = 0; i < allObjs.length; i++) {
-            if (i != 2){
-                drawTemplate(canvas,allObjs[i], HEIGHT/2, WIDTH, x, y);
-            }
-            if(i%2 == 0) {
-                x = 0;
-                y = y + WIDTH / 2;
+            if (i != 2) {
+                currentTemplate.pushImageInTemplate(allObjs[i],x,y);
+                x = x + canvas.width/2;
             }
         }
     });
 
     $('#template3').click(function(){
+        currentTemplate.templateName = 'template3';
         var allObjs = canvas.getObjects();
         var x = 0;
         var y = 0;
         for (var i = 0; i < allObjs.length; i++) {
-            if (i != 2){
-                drawTemplate(canvas,allObjs[i], HEIGHT, WIDTH/2, x, y);
-            }
-            if(i%2 == 0) {
-                x = x + HEIGHT/2;
-                y = 0;
+            if (i != 2) {
+                currentTemplate.pushImageInTemplate(allObjs[i],x,y);
+                y = y + canvas.height/2;
             }
         }
     });
@@ -137,56 +133,54 @@ $(document).ready(function () {
             }
         })
     });
-    var draggableOptions = {
-        revert: true,
-        start: function(e){
-            console.log('start')
-        },
-        stop: function(e){
-            console.log('stop '+ e.element.attr('class'));
-            console.log('stop '+$(this).attr('class'))
-        }
-    };
-    $(".dragImg").draggable(draggableOptions);
-    $(".droppableImg").droppable({
-        drop: function (event, ui) {
-            var src = ui.draggable.context.src;
-            var x = $(this).attr("x");
-            var y = $(this).attr("y");
-            var width = $(this).width();
-            var height = $(this).height();
-            var canvas = document.getElementById('canvas');
-            drawImage(canvas, src, x, y, width,height);
-            $(this).append( "<img width='100px' height='100px' scr='"+src+"'></img>" );
-        }
-    });
 });
-function drawImage(canvas, src, x, y, w, h) {
-    var context = canvas.getContext('2d');
-    context.save(); //as we now keep track outselves of angle/zoom due to
-    var imageObj = new Image();
-    imageObj.onload = function() {
-        context.drawImage(imageObj, x, y, w, h);
-    };
-    imageObj.src = src.replace(new RegExp("thumb_", "g"), "");
 
-    context.restore();
+function handleDragStart(e) {
+    [].forEach.call(images, function (img) {
+        img.classList.remove('img_dragging');
+    });
+    this.classList.add('img_dragging');
 }
 
-function drawTemplate(canvas,image,height, width, x, y){
-    image.setHeight(height);
-    image.setWidth(width);
+function handleDragOver(e) {
+    if (e.preventDefault) {
+        e.preventDefault(); // Necessary. Allows us to drop.
+    }
+
+    e.dataTransfer.dropEffect = 'copy'; // See the section on the DataTransfer object.
+    // NOTE: comment above refers to the article (see top) -natchiketa
+
+    return false;
+}
+
+function handleDragEnter(e) {
+    // this / e.target is the current hover target.
+    this.classList.add('over');
+}
+
+function handleDragLeave(e) {
+    this.classList.remove('over'); // this / e.target is previous target element.
+}
+
+function handleDrop(e) {
+    if (e.stopPropagation) {
+        e.stopPropagation(); // stops the browser from redirecting.
+    }
+    var img = document.getElementsByClassName('img_dragging')[0];
+    var srcImg = img.src.replace(new RegExp("thumb_", "g"), "");
+    fabric.Image.fromURL(srcImg, function(oImg) {
+        currentTemplate.pushImageInTemplate(oImg, e.layerX, e.layerY);
+        canvas.add(oImg);
+    });
     canvas.calcOffset();
     canvas.renderAll();
-    image.setTop(y+image.getHeight()/2);
-    image.setLeft(x+image.getWidth()/2);
-    canvas.calcOffset();
-    canvas.renderAll();
+    return false;
 }
 
-function setImageInTemplate(img){
-    img.setTop(canvas.height/2);
-    img.setLeft(canvas.width/2);
-    img.setScaleY(canvas.height/img.height);
-    img.setScaleX(canvas.width/img.width);
+function handleDragEnd(e) {
+    // this/e.target is the source node.
+    [].forEach.call(images, function (img) {
+        img.classList.remove('img_dragging');
+    });
 }
+
