@@ -91,19 +91,22 @@ $(document).ready(function () {
 
     $('#template2').click(function(){
         currentTemplate.templateName = 'template2';
-        var allObjs = canvas.getObjects();
-        var x = 0;
-        var y = 0;
-        for (var i = 0; i < allObjs.length; i++) {
-            if (i != 2) {
-                currentTemplate.pushImageInTemplate(allObjs[i],x,y);
-                x = x + canvas.width/2;
-            }
-        }
     });
 
     $('#template3').click(function(){
         currentTemplate.templateName = 'template3';
+    });
+
+    $('#template4').click(function(){
+        currentTemplate.templateName = 'template4';
+    });
+
+    $('#template5').click(function(){
+        currentTemplate.templateName = 'template5';
+    });
+
+    $('#template6').click(function(){
+        currentTemplate.templateName = 'template6';
         var allObjs = canvas.getObjects();
         var x = 0;
         var y = 0;
