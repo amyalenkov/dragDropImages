@@ -166,6 +166,8 @@ function handleDrop(e) {
     if (e.stopPropagation) {
         e.stopPropagation(); // stops the browser from redirecting.
     }
+    if(e.preventDefault) { e.preventDefault(); }
+
     var img = document.getElementsByClassName('img_dragging')[0];
     var srcImg = img.src.replace(new RegExp("thumb_", "g"), "");
     fabric.Image.fromURL(srcImg, function(oImg) {
