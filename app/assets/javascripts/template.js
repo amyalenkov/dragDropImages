@@ -14,51 +14,101 @@ function Template(templateDefault, canvas){
             setTemplate(img, 5, 5, dropX, dropY);
         }else if(this.templateName == 'template6'){
             setTemplate(img, 1, 2, dropX, dropY)
+        }else if(this.templateName == 'template7'){
+            setTemplate7(img, 4, 4, dropX, dropY)
+        }else if(this.templateName == 'template8'){
+            setTemplate8(img, 4, 3, dropX, dropY)
         }
     };
 
-    function setTemplate3(img, amount_part_x, amount_part_y, dropX, dropY){
-        var x = getCoordinate(this.canvas.width, amount_part_x, dropX);
-        var y = getCoordinate(this.canvas.height, amount_part_y, dropY);
-        if(x == 0 && y == 0){
-            setTemplateWithSize(img, amount_part_x,0,amount_part_y,0,
-                    this.canvas.width/2, this.canvas.height/3, 2, 2,
-                    dropX, dropY);
-        }else if( x == 1 && y == 1){
-            setTemplateWithSize(img, amount_part_x,this.canvas.width/2,amount_part_y,this.canvas.height/3,
-                    this.canvas.width/2, this.canvas.height/3, 2, 2,
-                    dropX - this.canvas.width/2, dropY - this.canvas.height/3);
-        }else if( x == 0 && y == 2){
-            setTemplateWithSize(img, amount_part_x,0,amount_part_y,this.canvas.height/2,
-                    this.canvas.width/2, this.canvas.height/3, 2, 2,
-                    dropX, dropY - this.canvas.height/2);
-        }else{
-            var x_pos = getPosition(this.canvas.width, amount_part_x, x);
-            var y_pos = getPosition(this.canvas.height, amount_part_y, y);
+    function setTemplate8(img, amount_part_x, amount_part_y, dropX, dropY){
+        var x = getCoordinate(canvas.width, amount_part_x, dropX);
+        var y = getCoordinate(canvas.height, amount_part_y, dropY);
+        var y_pos = getPosition(canvas.height, amount_part_y, y);
+        var x_pos;
+        if(y == 0){
+            if(x == 0 || x == 1 || x == 2){
+                setImageOnCanvas(img, canvas.height/6, canvas.width*(3/8),
+                        (canvas.height/img.height)/3, (canvas.width/img.width)*(3/4));
+            }else{
+                x_pos = getPosition(canvas.width, amount_part_x, x);
+                setImageOnCanvas(img, y_pos, x_pos,
+                        (canvas.height/img.height)/amount_part_y,
+                        (canvas.width/img.width)/amount_part_x);
+            }
+        }else if(y == 1){
+            x = getCoordinate(canvas.width, 2, dropX);
+            x_pos = getPosition(canvas.width, 2, x);
             setImageOnCanvas(img, y_pos, x_pos,
-                    (this.canvas.height/img.height)/amount_part_y, (this.canvas.width/img.width)/amount_part_x);
+                    (canvas.height/img.height)/amount_part_y,
+                    (canvas.width/img.width)/2);
+        }else if(y == 2){
+            if(x == 1 || x == 2 || x == 3){
+                setImageOnCanvas(img, canvas.height*(5/6), canvas.width*(5/8),
+                        (canvas.height/img.height)/3, (canvas.width/img.width)*(3/4));
+            }else{
+                x_pos = getPosition(canvas.width, amount_part_x, x);
+                setImageOnCanvas(img, y_pos, x_pos,
+                        (canvas.height/img.height)/amount_part_y,
+                        (canvas.width/img.width)/amount_part_x);
+            }
         }
     }
 
-    function setTemplateWithSize(img, amount_part_x_old,x1,amount_part_y_old, y1,
+    function setTemplate3(img, amount_part_x, amount_part_y, dropX, dropY){
+        var x = getCoordinate(canvas.width, amount_part_x, dropX);
+        var y = getCoordinate(canvas.height, amount_part_y, dropY);
+        if(x == 0 && y == 0){
+            setTemplateWithSize(img, 0,0,
+                    canvas.width/2, canvas.height/3, 2, 2,
+                    dropX, dropY);
+        }else if( x == 1 && y == 1){
+            setTemplateWithSize(img, canvas.width/2,canvas.height/3,
+                    canvas.width/2, canvas.height/3, 2, 2,
+                    dropX - canvas.width/2, dropY - canvas.height/3);
+        }else if( x == 0 && y == 2){
+            setTemplateWithSize(img, 0,canvas.height/2,
+                    canvas.width/2, canvas.height/3, 2, 2,
+                    dropX, dropY - canvas.height/2);
+        }else{
+            var x_pos = getPosition(canvas.width, amount_part_x, x);
+            var y_pos = getPosition(canvas.height, amount_part_y, y);
+            setImageOnCanvas(img, y_pos, x_pos,
+                    (canvas.height/img.height)/amount_part_y, (canvas.width/img.width)/amount_part_x);
+        }
+    }
+
+    function setTemplate7(img, amount_part_x, amount_part_y, dropX, dropY) {
+        var x = getCoordinate(canvas.width, amount_part_x, dropX);
+        var y = getCoordinate(canvas.height, amount_part_y, dropY);
+        if ((x == 1 || x == 2) && (y == 1 || y == 2)) {
+            setImageOnCanvas(img, canvas.height/2, canvas.width/2,
+                    (canvas.height/img.height)/2, (canvas.width/img.width)/2);
+        }else{
+            var x_pos = getPosition(canvas.width, amount_part_x, x);
+            var y_pos = getPosition(canvas.height, amount_part_y, y);
+            setImageOnCanvas(img, y_pos, x_pos,
+                    (canvas.height/img.height)/amount_part_y, (canvas.width/img.width)/amount_part_x);
+        }
+    }
+
+    function setTemplateWithSize(img, x1,y1,
                                  sizeX, sizeY, amount_part_x, amount_part_y, dropX, dropY){
         var x = getCoordinate(sizeX, amount_part_x, dropX);
         var y = getCoordinate(sizeY, amount_part_y, dropY);
         var x_pos = getPosition(sizeX, amount_part_x, x) + x1;
-//        var x_pos = getPosition(sizeX, amount_part_x, x);
-//        var y_pos = getPosition(sizeY, amount_part_y, y);
         var y_pos = getPosition(sizeY, amount_part_y, y) + y1;
         setImageOnCanvas(img, y_pos, x_pos,
                 (sizeY/img.height)/amount_part_y, (sizeX/img.width)/amount_part_x);
     }
 
     function setTemplate(img, amount_part_x, amount_part_y, dropX, dropY){
-        var x = getCoordinate(this.canvas.width, amount_part_x, dropX);
-        var y = getCoordinate(this.canvas.height, amount_part_y, dropY);
-        var x_pos = getPosition(this.canvas.width, amount_part_x, x);
-        var y_pos = getPosition(this.canvas.height, amount_part_y, y);
+        var x = getCoordinate(canvas.width, amount_part_x, dropX);
+        var y = getCoordinate(canvas.height, amount_part_y, dropY);
+        var x_pos = getPosition(canvas.width, amount_part_x, x);
+        var y_pos = getPosition(canvas.height, amount_part_y, y);
         setImageOnCanvas(img, y_pos, x_pos,
-                (this.canvas.height/img.height)/amount_part_y, (this.canvas.width/img.width)/amount_part_x);
+                (canvas.height/img.height)/amount_part_y, (canvas.width/img.width)/amount_part_x);
     }
 
     function getPosition(fullSize, amount_part, coordinate){
@@ -83,7 +133,7 @@ function Template(templateDefault, canvas){
 //        img.scale(scaleY)
         img.setScaleY(scaleY);
         img.setScaleX(scaleX);
-        this.canvas.calcOffset();
-        this.canvas.renderAll();
+        canvas.calcOffset();
+        canvas.renderAll();
     }
 }

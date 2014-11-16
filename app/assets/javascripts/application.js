@@ -118,6 +118,13 @@ $(document).ready(function () {
         }
     });
 
+    $('#template7').click(function(){
+        currentTemplate.templateName = 'template7';
+    });
+    $('#template8').click(function(){
+        currentTemplate.templateName = 'template8';
+    });
+
     $('#order').click(function(){
         canvas.deactivateAll().renderAll();
         canvasSrc = document.getElementById('canvas').toDataURL();
