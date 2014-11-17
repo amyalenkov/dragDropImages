@@ -74,20 +74,6 @@ $(document).ready(function () {
     $('#template1').click(function(){
         deleteAllImages();
         currentTemplate.templateName = 'template1';
-        var allObjs = canvas.getObjects();
-        var x = 0;
-        var y = 0;
-        for (var i = 0; i < allObjs.length; i++) {
-            if (i != 4) {
-                if(i%2 == 0){
-                    currentTemplate.pushImageInTemplate(allObjs[i],x,y);
-                    x = x + canvas.width/2;
-                }else{
-                    currentTemplate.pushImageInTemplate(allObjs[i],x,y);
-                    y = y + canvas.height/2;
-                }
-            }
-        }
     });
 
     $('#template2').click(function(){
@@ -113,15 +99,6 @@ $(document).ready(function () {
     $('#template6').click(function(){
         deleteAllImages();
         currentTemplate.templateName = 'template6';
-        var allObjs = canvas.getObjects();
-        var x = 0;
-        var y = 0;
-        for (var i = 0; i < allObjs.length; i++) {
-            if (i != 2) {
-                currentTemplate.pushImageInTemplate(allObjs[i],x,y);
-                y = y + canvas.height/2;
-            }
-        }
     });
 
     $('#template7').click(function(){
@@ -137,7 +114,7 @@ $(document).ready(function () {
         canvas.deactivateAll().renderAll();
         canvasSrc = document.getElementById('canvas').toDataURL();
         $.ajax({
-            url: 'payments/setSrcImage',
+            url: '/payments/setSrcImage',
             type: 'POST',
             data: {
                 srcImage: canvasSrc
