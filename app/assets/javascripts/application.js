@@ -72,6 +72,7 @@ $(document).ready(function () {
         }
     });
     $('#template1').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template1';
         var allObjs = canvas.getObjects();
         var x = 0;
@@ -90,22 +91,27 @@ $(document).ready(function () {
     });
 
     $('#template2').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template2';
     });
 
     $('#template3').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template3';
     });
 
     $('#template4').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template4';
     });
 
     $('#template5').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template5';
     });
 
     $('#template6').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template6';
         var allObjs = canvas.getObjects();
         var x = 0;
@@ -119,9 +125,11 @@ $(document).ready(function () {
     });
 
     $('#template7').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template7';
     });
     $('#template8').click(function(){
+        deleteAllImages();
         currentTemplate.templateName = 'template8';
     });
 
@@ -144,6 +152,13 @@ $(document).ready(function () {
         })
     });
 });
+
+function deleteAllImages(){
+    var allObjs = canvas.getObjects();
+    for (var i = 0; i < allObjs.length; i++) {
+        canvas.remove(allObjs[0]);
+    }
+}
 
 function handleDragStart(e) {
     [].forEach.call(images, function (img) {
