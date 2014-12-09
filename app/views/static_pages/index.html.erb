@@ -1,2 +1,455 @@
-<h1>sdsdsdssd</h1>
-<%= link_to('link to templates', paintings_index_path, method: :post) %>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Фото-подушки</title>
+  <link rel="shortcut icon" href="img/icon.png"/>
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="description" content=""/>
+
+
+  <!-- LIGHT_BOX -->
+  <link href="assets/css/lightbox.css" rel="stylesheet" />
+  <script src="assets/lightbox.min.js"></script>
+
+  <!--<script src="../jquery-1.11.0.min.js"></script>-->
+  <!--<script src="../lightbox.min.js"></script>-->
+
+  <!-- END_LIGHT_BOX -->
+
+  <!--VK-->
+  <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
+  <script type="text/javascript">
+      VK.Widgets.Group("vk_groups", {mode: 0, width: "415", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81037916);
+  </script>
+
+  <script type="text/javascript">
+      VK.init({apiId: 4644144, onlyWidgets: true});
+  </script>
+  <!--END_VK-->
+
+
+  <!-- script_плавного отображения страницы -->
+  <script>
+      $(document).ready(function(){
+          $("body").css("display","none").fadeIn("slow");
+      });
+  </script>
+  <!-- end_script_плавного отображения страницы -->
+
+  <!-- slider -->
+  <script type="text/javascript" src="assets/jquery.cycle.all.js"></script>
+  <!-- end_slider -->
+
+</head>
+
+<body>
+
+<div id="menuTop">
+  <div class="center">
+    <div class="menuTop">
+      <a href="index.html" class="menuTopAImg"><img src="assets/img/logo.png"></a>
+      <a href="index.html" class="menuTopAText">
+        <p class="font1">Фото-подушки</p>
+        <p class="font2">создание подушек с фотографиями</p>
+      </a>
+
+      <a class="menuTopA1 md-trigger"  data-modal="modal-8_3">
+        Доставка
+      </a>
+      <img class="menuTopImg" src="assets/img/lineVertical.png">
+      <a class="menuTopA2 md-trigger"  data-modal="modal-8_2">
+        Оплата
+      </a>
+      <img class="menuTopImg" src="assets/img/lineVertical.png">
+      <a class="menuTopA2 md-trigger"  data-modal="modal-9_3">
+        Котакты
+      </a>
+
+      <p class="menuTopNomer"><b>+375(25)934-02-84</b></p>
+
+      <%= link_to('Заказать звонок', paintings_index_path, method: :post, class: "menuTopButton") %>
+      <!--<a class="menuTopButton">-->
+        <!--<img src="assets/img/phone.png">-->
+        <!--<p>Заказать звонок</p>-->
+      <!--</a>-->
+    </div>
+  </div>
+</div>
+
+<div id="top">
+  <div class="center">
+    <div class="topWoman"></div>
+    <div class="topPresent1">
+      <p class="topPresent1Text1">Лучший подарок!</p>
+      <p class="topPresent1Text2">Подушка с фотографиями..</p>
+      <p class="topPresent1Text3">
+        Вам осталось только загрузить фотки и разместить<br>
+        их на подушке, а мы сделаем все остальное:<br>
+        напечатаем, пошьём и отправим Вам!
+      </p>
+    </div>
+    <div class="topPresent2">
+      <p class="topPresent2Text1">Создайте свой уникальный</p>
+      <p class="topPresent2Text2">подарок прямо сейчас!</p>
+      <a href="#" class="topPresent2Text3">
+        <p><b>Приступить к созданию</b></p>
+        <img src="assets/img/st.png">
+      </a>
+    </div>
+    <div class="pillow">
+      <p><font1>300 000</font1><br><font2>рублей</font2></p>
+    </div>
+    <div class="present1">
+      <img src="assets/img/present1.png">
+      <p class="present1Text1"><b>Удобно оплатить</b></p>
+      <p class="present1Text2">
+        Оплачивайте на почте при<br>
+        получении или банковскими<br>
+        картами на нашем сайте.
+      </p>
+    </div>
+    <div class="present2">
+      <img src="assets/img/present2.png">
+      <p class="present2Text1"><b>Быстрая доставка</b></p>
+      <p class="present2Text2">
+        Отправлением EMS в любую<br>
+        точку страны. Доставка за<br>
+        3-5 дней до вашей двери.
+      </p>
+    </div>
+    <div class="present3">
+      <img src="assets/img/present3.png">
+      <p class="present1Text1"><b>Гарантия качества</b></p>
+      <p class="present1Text2">
+        Если Вам что-то не понравится,<br>
+        мы сделаем возврат покупки.<br>
+        Легко и без проблем!
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<div id="quality">
+  <div class="center">
+    <div class="qualityPillow">
+      <p class="qualityPillowP1"><b>Размер подушки</b></p>
+      <p class="qualityPillowP2"><b>38х38 см</b></p>
+      <p class="qualityPillowP3">
+        Наволочка съемная, изготовлена из<br>
+        приятного на ощупь сатэна. А сама<br>
+        подушка наполнена холофайбером<br>
+        (антиаллергенный наполнитель).<br><br>
+        Качество материала и печати позволяет<br>
+        без проблем стирать съемную наволочку<br>
+        при температуре до 40 градусов.
+      </p>
+    </div>
+
+    <div class="qualityPeople">
+      <div class="slideShowAbout">
+
+        <div class="slider1">
+          <img src="assets/img/11.jpg">
+          <p class="sliderP1">Оксана Новицкая</p>
+          <p class="sliderP2">
+            Подушка просто чума))отличное качество<br>
+            печати и быстрая доставка, а главное<br>
+            мягенькая)))огромное спасибо!))
+          </p>
+        </div>
+
+        <div class="slider1">
+          <img src="assets/img/12.jpg">
+          <p class="sliderP1">Стефа Сущинская</p>
+          <p class="sliderP2">
+            Подушка просто чума))отличное качество<br>
+            печати и быстрая доставка, а главное<br>
+            мягенькая)))огромное спасибо!))
+          </p>
+        </div>
+
+        <div class="slider1">
+          <img src="assets/img/13.jpg">
+          <p class="sliderP1">Анастасия Катеринич</p>
+          <p class="sliderP2">
+            Подушка просто чума))отличное качество<br>
+            печати и быстрая доставка, а главное<br>
+            мягенькая)))огромное спасибо!))
+          </p>
+        </div>
+
+        <div class="slider1">
+          <img src="assets/img/14.jpg">
+          <p class="sliderP1">Ирина Журавлева</p>
+          <p class="sliderP2">
+            Подушка просто чума))отличное качество<br>
+            печати и быстрая доставка, а главное<br>
+            мягенькая)))огромное спасибо!))
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="pillows">
+  <div class="center">
+    <img class="pillowsImg1" src="assets/img/ramka.png">
+    <p class="pillowText1">Готовые подушки</p>
+    <p class="pillowText2">Наших дорогих покупателей</p>
+    <img class="pillowsImg2" src="assets/img/stDown.png">
+  </div>
+</div>
+
+<div id="pillowsPhoto">
+  <div class="center">
+    <div class="pillowsPhoto">
+
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+      <a href="assets/img/photo/img1.png" data-lightbox="roadtrip"><img src="assets/img/photo/img1.png"></a>
+
+    </div>
+  </div>
+</div>
+
+<div id="lineZakaz">
+  <div class="center">
+    <div class="lineZakazLeft">
+      <img src="assets/img/pen.png">
+      <p class="lineZakazLeftP1">А как будет выглядеть подушка<br>с вашими фото?</p>
+    </div>
+    <div class="lineZakazRight">
+      <a href="#" class="lineZakazText3">
+        <p><b>Создать эскиз</b></p>
+        <img src="assets/img/st.png">
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="vk">
+  <div class="center">
+    <div class="vk">
+      <img src="assets/img/paper.png">
+      <p class="vkP1">Узнавайте первыми об акциях<br>нашего магазина! <b>Подпишитесь!</b></p>
+      <div id="vk_groups"></div>
+
+      <!-- Put this div tag to the place, where the Comments block will be -->
+      <!--<div id="vk_comments"></div>-->
+      <!--<script type="text/javascript">-->
+      <!--VK.Widgets.Comments("vk_comments", {limit: 10, width: "470", attach: "*"});-->
+      <!--        </script>-->
+
+    </div>
+  </div>
+</div>
+
+<div id="footer">
+  <div class="center">
+    <div class="footerLeft">
+      <a href="index.html"><img src="assets/img/logo2.png"></a>
+      <p class="footerLeftP1">Фото-подушки</p>
+      <p class="footerLeftP2">Создание подушек с фотографиями</p>
+    </div>
+    <div class="footerCenter">
+      <p class="footerCenterP1"><b>ИНФОРМАЦИЯ</b></p>
+      <a class="md-trigger" data-modal="modal-9_1">Оплата</a>
+      <a class="md-trigger" data-modal="modal-8_1">Доставка</a>
+      <!--<a class="md-trigger" data-modal="modal-8_2">FAQ</a>-->
+      <a class="md-trigger" data-modal="modal-9_2">Контакты</a>
+    </div>
+    <div class="footerRight">
+      <p class="footerRightP1"><b>© 2014 FotoPodushki.by</b></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="md-modal md-effect-8" id="modal-8_1">
+  <div class="md-content">
+    <h3>Modal Dialog</h3>
+    <div>
+      <p>This is a modal window. You can do the following things with it:</p>
+      <ul>
+        <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
+        <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+        <li><strong>Close:</strong> click on the button below to close the modal.</li>
+      </ul>
+      <button class="md-close">Close me!</button>
+    </div>
+  </div>
+</div>
+
+<div class="md-modal md-effect-8" id="modal-8_2">
+  <div class="md-content">
+    <h3>Способы оплаты</h3>
+    <div>
+      <p>
+        Способы оплаты<br>
+        Наложенным платежом - оплата при получении заказа<br>
+        Наложенный платеж - это возможность оплаты заказа в<br>
+        отделении почты в момент его получения. При получении<br>
+        и оплате заказа, доставленного наложенным платежом,<br>
+        взимается плата по тарифу на пересылку внутренних<br>
+        простых почтовых переводов. Процент оплаты зависит<br>
+        от пересылаемой суммы и фактически составляет: 5% + 50 руб.<br>
+        В связи с этим просим Вас приготовиться к оплате этого сбора,<br>
+        если Вы выбираете Наложенный платёж как способ оплаты.<br>
+        Оплата посредством перевода на карту Сбербанка<br>
+        Этот способ избавит Вас от уплаты процента за наложенный<br>
+        платеж и заполнения дополнительных бумаг на почте. Реквизиты<br>
+        для оплаты вы увидите на шаге оформления заказа.<br>
+      </p>
+      <button class="md-close">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="md-modal md-effect-9" id="modal-8_3">
+  <div class="md-content">
+    <h3>Доставка</h3>
+    <div>
+      <p>
+        Доставка<br>
+        * Заказ переходит на доставку сразу же после изготовления.<br>
+        Изготовление занимает 2 дня.<br>
+        Доставка по России<br>
+        Мы предлагаем два способа доставки по России.<br>
+        1) Отправлением 1-м классом Почты России. Доставка<br>
+        до ближайшего отделения почты. Срок доставки 5 - 9 рабочих дней.<br>
+        Стоимость доставки: 290р.<br>
+        2) Отправлением службы доставки EMS. Доставка до двери за 3-5 дней.<br>
+        Стоимость доставки: 790р.<br>
+        Все этапы оформления и доставки Вашего заказа сопровождаются смс информированием.<br>
+        Вы всегда в курсе всех событий, производимых с заказом.<br>
+        Доставка по Иркутску<br>
+
+        Доставку осуществляет наш курьер сразу после изготовления заказа (2 дня).<br>
+        Менеджер предварительно свяжется с Вами чтобы уточнить время и адрес для доставки.<br>
+        Доставка в другие страны<br>
+
+        Для отправления заказа в другие страны, свяжитесь, пожалуйста, с нашей службой<br>
+        поддержки по телефону (3952) 761-253 или по почте shop@daripodushki.ru.<br>
+        Мы найдем решение и предложим вам!
+      </p>
+      <button class="md-close">Закрыть</button>
+
+    </div>
+  </div>
+</div>
+
+<div class="md-modal md-effect-9" id="modal-9_1">
+  <div class="md-content">
+    <h3>Modal Dialog</h3>
+    <div>
+      <p>This is a modal window. You can do the following things with it:</p>
+      <ul>
+        <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
+        <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+        <li><strong>Close:</strong> click on the button below to close the modal.</li>
+      </ul>
+      <button class="md-close">Close me!</button>
+    </div>
+  </div>
+</div>
+
+<div class="md-modal md-effect-9" id="modal-9_2">
+  <div class="md-content">
+    <h3>Контакты</h3>
+    <div>
+      <p>
+        О нас<br>
+        Daripodushki.ru – это сервис, с помощью которого Вы сможете создать<br>
+        уникальную подушку с вашими фотографиями.<br>
+        Наша миссия – дать новый и увлекательный способ порадовать себя и своих<br>
+        близких людей оригинальным подарком и предметом интерьера.<br>
+        Для нас важно чтобы покупатель и получатель подарка остались довольны,<br>
+        поэтому наши подушки сделаны из качественных материалов, а картинка<br>
+        всегда останется в первоначальном виде. Мы гарантируем качество,<br>
+        поэтому готовы вернуть деньги, если вас что-то не устроит в нашем продукте.<br>
+        Контакты<br>
+        Коллектив сервиса Daripodushki.ru находится в г.Иркутске.<br>
+        Работаем и принимаем заказы каждый день 24 часа в сутки.<br>
+        Вы всегда можете связаться с нами по телефону: 8 (3952) 761-253<br>
+        Или по email: shop@daripodushki.ru<br>
+        Будем рады ответить на ваши вопросы!<br>
+      </p>
+      <button class="md-close">Close me!</button>
+    </div>
+  </div>
+</div>
+
+<div class="md-modal md-effect-9" id="modal-9_3">
+  <div class="md-content">
+    <h3>Modal Dialog</h3>
+    <div>
+      <p>This is a modal window. You can do the following things with it:</p>
+      <ul>
+        <li><strong>Read:</strong> modal windows will probably tell you something important so don't forget to read what they say.</li>
+        <li><strong>Look:</strong> a modal window enjoys a certain kind of attention; just look at it and appreciate its presence.</li>
+        <li><strong>Close:</strong> click on the button below to close the modal.</li>
+      </ul>
+      <button class="md-close">Close me!</button>
+    </div>
+  </div>
+</div>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.slideShowAbout').cycle({
+            fx: 'scrollUp',
+            speed: 2500,
+            timeout: 5500
+        });
+    });
+</script>
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="assets/css/default.css" />
+<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+<script src="assets/modernizr.custom.js"></script>
+
+<div class="md-overlay"></div><!-- the overlay element -->
+
+<!-- classie.js by @desandro: https://github.com/desandro/classie -->
+<script src="assets/classie.js"></script>
+<script src="assets/modalEffects.js"></script>
+
+<!-- for the blur effect -->
+<!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
+<script>
+    // this is important for IEs
+    var polyfilter_scriptpath = '/js/';
+</script>
+<script src="assets/cssParser.js"></script>
+<script src="assets/css-filters-polyfill.js"></script>
+
+</html>

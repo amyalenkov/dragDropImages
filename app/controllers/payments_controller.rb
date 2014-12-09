@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
 
   def afterPay
     p params[:cost_title]
-    email = 'myalenkov@gmail.com'
+    email = 'dsuschinsky@gmail.com'
     image_src = "public/assets/"+cookies['image_user_token']+".png"
     cost = params['cost'] + '*' + params['count'] + '=' + params['finalCost']
     ImageMailer.welcome_email(email, image_src,
