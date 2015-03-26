@@ -14,9 +14,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
-gem 'jquery-fileupload-rails'
-gem 'jquery-ui-rails'
+gem 'jquery-rails', '3.0.4 '
+gem 'jquery-fileupload-rails', '0.4.5'
+gem 'jquery-ui-rails', '4.1.1 '
 
 gem 'carrierwave'
 gem 'rmagick'
