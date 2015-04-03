@@ -16,15 +16,6 @@ $(document).ready(function () {
         canvas.bringToFront(activeObject)
     }
     canvas.on('object:selected', onObjectSelected);
-    $('body').on('click','.dragImg',function(){
-        var srcImg = this.src.replace(new RegExp("thumb_", "g"), "");
-        fabric.Image.fromURL(srcImg, function(oImg) {
-            currentTemplate.pushImageInTemplate(oImg);
-            canvas.add(oImg);
-        });
-        canvas.calcOffset();
-        canvas.renderAll();
-    });
     $('#opacity').on('change', function(){
         var activeObject = canvas.getActiveObject();
         if(canvas.getActiveObject() == null){
