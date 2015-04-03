@@ -8,16 +8,7 @@ var currentTemplate = null;
 $(document).ready(function () {
     canvas = new fabric.Canvas('canvas');
     currentTemplate = new Template('template1',canvas);
-    images = document.getElementsByClassName('dragImg');
-    [].forEach.call(images, function (img) {
-        img.addEventListener('dragstart', handleDragStart, false);
-        img.addEventListener('dragend', handleDragEnd, false);
-    });
-    var canvasContainer = document.getElementById('canvas-container');
-    canvasContainer.addEventListener('dragenter', handleDragEnter, false);
-    canvasContainer.addEventListener('dragover', handleDragOver, false);
-    canvasContainer.addEventListener('dragleave', handleDragLeave, false);
-    canvasContainer.addEventListener('drop', handleDrop, false);
+    addAllImages();
     var canvasSrc = canvas.toDataURL();
     function onObjectSelected(e) {
         var activeObject = canvas.getActiveObject();
@@ -112,6 +103,19 @@ $(document).ready(function () {
     });
 });
 
+function addAllImages(){
+    images = document.getElementsByClassName('dragImg');
+    [].forEach.call(images, function (img) {
+        img.addEventListener('dragstart', handleDragStart, false);
+        img.addEventListener('dragend', handleDragEnd, false);
+    });
+    var canvasContainer = document.getElementById('canvas-container');
+    canvasContainer.addEventListener('dragenter', handleDragEnter, false);
+    canvasContainer.addEventListener('dragover', handleDragOver, false);
+    canvasContainer.addEventListener('dragleave', handleDragLeave, false);
+    canvasContainer.addEventListener('drop', handleDrop, false);
+}
+
 function deleteAllImages(){
     var allObjs = canvas.getObjects();
     for (var i = 0; i < allObjs.length; i++) {
@@ -120,6 +124,7 @@ function deleteAllImages(){
 }
 
 function handleDragStart(e) {
+    console.log('drag start');
     [].forEach.call(images, function (img) {
         img.classList.remove('img_dragging');
     });
