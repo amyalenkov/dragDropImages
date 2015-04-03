@@ -17,6 +17,7 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require template
+//= require paintings
 
 var canvas = null;
 var images = null;
