@@ -85,11 +85,7 @@ $(document).ready(function () {
                 srcImage: canvasSrc
             },
             success: function(data){
-                console.log('success')
                 $('.button_to').submit();
-            },
-            error: function(){
-                console.log('error' )
             }
         })
     });
@@ -112,10 +108,7 @@ function addDropEventForCanvas(){
 }
 
 function deleteAllImages(){
-    var allObjs = canvas.getObjects();
-    for (var i = 0; i < allObjs.length; i++) {
-        canvas.remove(allObjs[0]);
-    }
+    canvas.clear().renderAll();
 }
 
 function handleDragStart(e) {
@@ -152,7 +145,6 @@ function handleDrop(e) {
     if(e.preventDefault) { e.preventDefault(); }
 
     var img = document.getElementsByClassName('img_dragging')[0];
-    console.log(document.getElementsByClassName('img_dragging'));
     var srcImg = img.src.replace(new RegExp("thumb_", "g"), "");
     fabric.Image.fromURL(srcImg, function(oImg) {
         currentTemplate.pushImageInTemplate(oImg, e.layerX, e.layerY);
