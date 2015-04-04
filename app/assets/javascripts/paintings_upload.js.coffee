@@ -20,3 +20,4 @@ jQuery ->
     done: (e, data) ->
       $('img').attr('class', 'dragImg ui-widget-content')
       $(".dragImg").attr('draggable', 'true')
+      addAllImages();

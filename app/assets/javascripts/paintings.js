@@ -9,6 +9,7 @@ $(document).ready(function () {
     canvas = new fabric.Canvas('canvas');
     currentTemplate = new Template('template1',canvas);
     addAllImages();
+    addDropEventForCanvas();
     var canvasSrc = canvas.toDataURL();
     function onObjectSelected(e) {
         var activeObject = canvas.getActiveObject();
@@ -100,6 +101,9 @@ function addAllImages(){
         img.addEventListener('dragstart', handleDragStart, false);
         img.addEventListener('dragend', handleDragEnd, false);
     });
+}
+
+function addDropEventForCanvas(){
     var canvasContainer = document.getElementById('canvas-container');
     canvasContainer.addEventListener('dragenter', handleDragEnter, false);
     canvasContainer.addEventListener('dragover', handleDragOver, false);
@@ -115,7 +119,6 @@ function deleteAllImages(){
 }
 
 function handleDragStart(e) {
-    console.log('drag start');
     [].forEach.call(images, function (img) {
         img.classList.remove('img_dragging');
     });
@@ -149,6 +152,7 @@ function handleDrop(e) {
     if(e.preventDefault) { e.preventDefault(); }
 
     var img = document.getElementsByClassName('img_dragging')[0];
+    console.log(document.getElementsByClassName('img_dragging'));
     var srcImg = img.src.replace(new RegExp("thumb_", "g"), "");
     fabric.Image.fromURL(srcImg, function(oImg) {
         currentTemplate.pushImageInTemplate(oImg, e.layerX, e.layerY);
