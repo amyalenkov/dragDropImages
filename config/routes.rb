@@ -11,4 +11,5 @@ Gallery::Application.routes.draw do
   post 'payments/order'
   post 'payments/setSrcImage'
   post 'payments/afterPay'
+  post 'static_pages/index'
 end

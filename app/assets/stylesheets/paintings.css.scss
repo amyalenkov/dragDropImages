@@ -3,8 +3,8 @@
 }
 
 .painting {
-  border: solid 1px #CCC;
-  padding: 10px;
+//  border: solid 1px #CCC;
+//  padding: 10px;
   float: left;
   margin-right: 20px;
   margin-bottom: 20px;
@@ -13,6 +13,8 @@
     padding-top: 5px;
     text-align: center;
     font-weight: bold;
+
+    display: none;
   }
 
   .actions {
@@ -27,10 +29,8 @@
 }
 
 .upload {
-  border-top: solid 1px #CCC;
-  width: 400px;
-  padding-top: 10px;
-  margin-top: 10px;
+//  border-top: solid 1px #CCC;
+  width: 100px;
 
   .progress {
     margin-top: 8px;

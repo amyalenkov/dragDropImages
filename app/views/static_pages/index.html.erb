@@ -11,7 +11,7 @@
 
   <!-- LIGHT_BOX -->
   <link href="assets/css/lightbox.css" rel="stylesheet" />
-  <script src="assets/lightbox.min.js"></script>
+  <!--<script src="assets/lightbox.min.js"></script>-->
 
   <!--<script src="../jquery-1.11.0.min.js"></script>-->
   <!--<script src="../lightbox.min.js"></script>-->
@@ -19,27 +19,27 @@
   <!-- END_LIGHT_BOX -->
 
   <!--VK-->
-  <script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>
-  <script type="text/javascript">
-      VK.Widgets.Group("vk_groups", {mode: 0, width: "415", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81037916);
-  </script>
+  <!--<script type="text/javascript" src="//vk.com/js/api/openapi.js?115"></script>-->
+  <!--<script type="text/javascript">-->
+//      VK.Widgets.Group("vk_groups", {mode: 0, width: "415", height: "400", color1: 'FFFFFF', color2: '2B587A', color3: '5B7FA6'}, 81037916);
+  <!--</script>-->
 
-  <script type="text/javascript">
-      VK.init({apiId: 4644144, onlyWidgets: true});
-  </script>
+  <!--<script type="text/javascript">-->
+//      VK.init({apiId: 4644144, onlyWidgets: true});
+  <!--</script>-->
   <!--END_VK-->
 
 
   <!-- script_плавного отображения страницы -->
-  <script>
-      $(document).ready(function(){
-          $("body").css("display","none").fadeIn("slow");
-      });
-  </script>
+  <!--<script>-->
+//      $(document).ready(function(){
+//          $("body").css("display","none").fadeIn("slow");
+//      });
+  <!--</script>-->
   <!-- end_script_плавного отображения страницы -->
 
   <!-- slider -->
-  <script type="text/javascript" src="assets/jquery.cycle.all.js"></script>
+  <!--<script type="text/javascript" src="assets/jquery.cycle.all.js"></script>-->
   <!-- end_slider -->
 
 </head>
@@ -49,7 +49,8 @@
 <div id="menuTop">
   <div class="center">
     <div class="menuTop">
-      <a href="index.html" class="menuTopAImg"><img src="assets/img/logo.png"></a>
+      <!--<%= link_to('', static_pages_index_path, method: :post, class: "menuTopAImg") %>-->
+      <a href="index" class="menuTopAImg"><img src="assets/img/logo.png"></a>
       <a href="index.html" class="menuTopAText">
         <p class="font1">Фото-подушки</p>
         <p class="font2">создание подушек с фотографиями</p>
@@ -70,10 +71,7 @@
       <p class="menuTopNomer"><b>+375(25)934-02-84</b></p>
 
       <%= link_to('Заказать звонок', paintings_index_path, method: :post, class: "menuTopButton") %>
-      <!--<a class="menuTopButton">-->
-        <!--<img src="assets/img/phone.png">-->
-        <!--<p>Заказать звонок</p>-->
-      <!--</a>-->
+
     </div>
   </div>
 </div>
@@ -93,10 +91,9 @@
     <div class="topPresent2">
       <p class="topPresent2Text1">Создайте свой уникальный</p>
       <p class="topPresent2Text2">подарок прямо сейчас!</p>
-      <a href="#" class="topPresent2Text3">
-        <p><b>Приступить к созданию</b></p>
-        <img src="assets/img/st.png">
-      </a>
+
+      <%= link_to('Приступить к созданию', paintings_index_path, method: :post, class: "topPresent2Text3") %>
+
     </div>
     <div class="pillow">
       <p><font1>300 000</font1><br><font2>рублей</font2></p>
@@ -237,10 +234,7 @@
       <p class="lineZakazLeftP1">А как будет выглядеть подушка<br>с вашими фото?</p>
     </div>
     <div class="lineZakazRight">
-      <a href="#" class="lineZakazText3">
-        <p><b>Создать эскиз</b></p>
-        <img src="assets/img/st.png">
-      </a>
+      <%= link_to('Создать эскиз', paintings_index_path, method: :post, class: "lineZakazText3") %>
     </div>
   </div>
 </div>
@@ -251,13 +245,6 @@
       <img src="assets/img/paper.png">
       <p class="vkP1">Узнавайте первыми об акциях<br>нашего магазина! <b>Подпишитесь!</b></p>
       <div id="vk_groups"></div>
-
-      <!-- Put this div tag to the place, where the Comments block will be -->
-      <!--<div id="vk_comments"></div>-->
-      <!--<script type="text/javascript">-->
-      <!--VK.Widgets.Comments("vk_comments", {limit: 10, width: "470", attach: "*"});-->
-      <!--        </script>-->
-
     </div>
   </div>
 </div>
@@ -281,11 +268,6 @@
     </div>
   </div>
 </div>
-
-
-
-
-
 
 <div class="md-modal md-effect-8" id="modal-8_1">
   <div class="md-content">
@@ -419,33 +401,34 @@
 
 </body>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('.slideShowAbout').cycle({
-            fx: 'scrollUp',
-            speed: 2500,
-            timeout: 5500
-        });
-    });
-</script>
+<!--<script type="text/javascript">-->
+//    $(document).ready(function() {
+//        $('.slideShowAbout').cycle({
+//            fx: 'scrollUp',
+//            speed: 2500,
+//            timeout: 5500
+//        });
+//    });
+<!--</script>-->
 
 <link rel="stylesheet" type="text/css" href="assets/css/default.css" />
 <link rel="stylesheet" type="text/css" href="assets/css/component.css" />
-<script src="assets/modernizr.custom.js"></script>
+<!--<script src="assets/modernizr.custom.js"></script>-->
 
-<div class="md-overlay"></div><!-- the overlay element -->
+<!--<div class="md-overlay"></div>&lt;!&ndash; the overlay element &ndash;&gt;-->
 
 <!-- classie.js by @desandro: https://github.com/desandro/classie -->
-<script src="assets/classie.js"></script>
-<script src="assets/modalEffects.js"></script>
+<!--<script src="assets/classie.js"></script>-->
+<!--<script src="assets/modalEffects.js"></script>-->
 
 <!-- for the blur effect -->
 <!-- by @derSchepp https://github.com/Schepp/CSS-Filters-Polyfill -->
-<script>
-    // this is important for IEs
-    var polyfilter_scriptpath = '/js/';
-</script>
-<script src="assets/cssParser.js"></script>
-<script src="assets/css-filters-polyfill.js"></script>
+
+<!--<script>-->
+//    var polyfilter_scriptpath = "assets/css-filters-polyfill.js";
+<!--</script>-->
+
+<!--<script src="assets/cssParser.js"></script>-->
+<!--<script src="assets/css-filters-polyfill.js"></script>-->
 
 </html>

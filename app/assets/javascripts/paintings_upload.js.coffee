@@ -1,6 +1,7 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+
 jQuery ->
   $('#new_painting').fileupload
     dataType: "script"
@@ -18,6 +19,8 @@ jQuery ->
         progress = parseInt(data.loaded / data.total * 100, 10)
         data.context.find('.bar').css('width', progress + '%')
     done: (e, data) ->
-      $('img').attr('class', 'dragImg ui-widget-content')
+      console.log(e)
+      console.log(data)
+      $('#paintings').find('img').attr('class', 'dragImg ui-widget-content')
       $(".dragImg").attr('draggable', 'true')
       addAllImages();

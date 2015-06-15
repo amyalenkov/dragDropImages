@@ -1,41 +1,238 @@
+<%= javascript_include_tag 'jquery.cycle.all' %>
 <%= javascript_include_tag 'paintings' %>
-<h1>Painting Gallery <%= @user.id %></h1>
-<div id="paintings">
-  <%= render @paintings %>
+<!--<%= javascript_include_tag 'slide' %>-->
+<!--<%= javascript_include_tag 'lightbox.min' %>-->
+<!--<h1>Painting Gallery <%= @user.id %></h1>-->
+
+<script>
+//    $(document).ready(function(){
+//        $('.view-source .hide').toggle();
+//        $('.view-source a').toggle(
+//                function(){
+//                    $('.hide').slideUp(500);
+//                    $(this).html('Выберите расположение фотографий');
+//                },
+//                function(){
+//                    $('.hide').slideDown(500);
+//                    $(this).html('Выберите расположение фотографий');
+//                }
+//        );
+//    });
+</script>
+
+<div id="menuTop2">
+  <div class="center">
+    <div class="menuTop">
+      <a href="" class="menuTopAImg"><img src="../assets/img/logo.png"></a>
+      <a href="" class="menuTopAText">
+        <p class="font1">Фото-подушки</p>
+        <p class="font2">создание подушек с фотографиями</p>
+      </a>
+
+      <a class="menuTopA1 md-trigger"  data-modal="modal-8_3">
+        Доставка
+      </a>
+      <img class="menuTopImg" src="../assets/img/lineVertical.png">
+      <a class="menuTopA2 md-trigger"  data-modal="modal-8_2">
+        Оплата
+      </a>
+      <img class="menuTopImg" src="../assets/img/lineVertical.png">
+      <a class="menuTopA2 md-trigger"  data-modal="modal-9_3">
+        Котакты
+      </a>
+
+      <p class="menuTopNomer"><b>+375(25)934-02-84</b></p>
+
+      <%= link_to('Заказать звонок', paintings_index_path, method: :post, class: "menuTopButton") %>
+
+    </div>
+  </div>
 </div>
 
-<%= form_for Painting.new do |f| %>
-    <%= f.label :image, "Upload images:" %>
-    <%= f.file_field :image, multiple: true, name: "painting[image]",  user_id: @user.id%>
-<% end %>
+<div class="center" >
 
-<div id="center" >
-  <input type="button" id="order" value="Заказать"/>
-  <div style="display:none;">
-    <%= button_to "Заказать", {controller: "payments",action: "order"},
-                  {:remote => false, :id => 'lnk_more'}%>
+  <div id="slide">
+    <div class="center">
+      <div class="slide">
+        <div class="view-source">
+          <p class="hide">Выберите расположение фоторгафий</p>
+          <div class="hide" style="/*display: none;*/width: 1045px;">
+            <div class="constructorFoto" id="template6" value="template6" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor1.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema1.png"/>
+              <p class="constructorP1" id="descriptionFoto11">2 фото</p>
+              <p class="constructorP2" id="descriptionFoto12" style="margin-top: -15px; margin-left: 9px;">2 горизонтальных фото</p>
+            </div>
+            <div class="constructorFoto" id="template8" value="template8" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor2.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema2.png"/>
+              <p class="constructorP1" id="descriptionFoto11">6 фото</p>
+              <p class="constructorP2" id="descriptionFoto12" style="margin-top: 42px; margin-left: -70px;">6 прямоугольников</p>
+            </div>
+            <div class="constructorFoto" id="template7" value="template7" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor3.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema3.png"/>
+              <p class="constructorP1" id="descriptionFoto11">13 фото</p>
+              <p class="constructorP2" id="descriptionFoto12" style="margin-top: -30px; margin-left: 103px;">1 большое и 12 маленьких</p>
+            </div>
+            <div class="constructorFoto" id="template3" value="template3" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor4.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema4.png"/>
+              <p class="constructorP1" id="descriptionFoto11">15 фото</p>
+              <p class="constructorP2" id="descriptionFoto12" style="margin-top: -30px; margin-left: 103px;">3 большое и 12 маленьких</p>
+            </div>
+            <div class="constructorFoto" id="template1" value="template1" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor5.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema5.png"/>
+              <p class="constructorP1" id="descriptionFoto11">2 х 2 фото</p>
+              <p class="constructorP2" id="descriptionFoto12">4 равных квадрата</p>
+            </div>
+            <div class="constructorFoto" id="template2" value="template2" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema6.png"/>
+              <p class="constructorP1" id="descriptionFoto11">3 х 3 фото</p>
+              <p class="constructorP2" id="descriptionFoto12">9 равных квадрата</p>
+            </div>
+            <div class="constructorFoto" id="template4" value="template4" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor7.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema7.png"/>
+              <p class="constructorP1" id="descriptionFoto11">4 х 4 фото</p>
+              <p class="constructorP2" id="descriptionFoto12">16 равных квадрата</p>
+            </div>
+            <div class="constructorFoto" id="template5" value="template5" href="#scrollToForm">
+              <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>
+              <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema8.png"/>
+              <p class="constructorP1" id="descriptionFoto11">5 х 5 фото</p>
+              <p class="constructorP2" id="descriptionFoto12">25 равных квадрата</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <input type="button" id="deleteImage" value="deleteImage"/>
-    <input type="range" id="opacity" min="0" max="1" step="0.1" value="0.5">
-    <input type="button" id="template1" value="template1"/>
-    <input type="button" id="template2" value="template2"/>
-    <input type="button" id="template3" value="template3"/>
-    <input type="button" id="template4" value="template4"/>
-    <input type="button" id="template5" value="template5"/>
-    <input type="button" id="template6" value="template6"/>
-    <input type="button" id="template7" value="template7"/>
-    <input type="button" id="template8" value="template8"/>
+
+  <div id="constructor">
+    <div class="center">
+      <div class="constructor">
+        <div id="scrollToForm"></div>
+        <div class="leftConstructor">
+          <div class="leftConstructor2">
+            <div id="canvas-container" style="width: 435px; height: 435px;">
+              <canvas id="canvas" width="435" height="435" >
+              </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="rightConstructor">
+          <div class="rightConstructor1">
+            <p class="rightConstructor1P1">Шаг 1</p>
+            <p class="rightConstructor1P2">
+              Загрузите фото с устройства, используя соответствующую кнопку влевом нижнем углу страницы.
+            </p>
+          </div>
+          <div class="rightConstructor2">
+            <p class="rightConstructor2P1">1. Расположение фото:</p>
+            <!--<img class="rightConstructor2FotoImg2" id="schema" src="../assets/img/pillowCunstructor/schema6.png"/>-->
+            <div id="schema"></div>
+            <p class="rightConstructor2P2" id="descriptionFoto1">2 фото</p>
+            <p class="rightConstructor2P3" id="descriptionFoto2">2 горизонтальных фото</p>
+            <p class="rightConstructor2P1">2. Цвет обратной стороны подушки: </p>
+            <img class="rightConstructorPillowBlack" src="../assets/img/pillowBlack.png"/>
+            <p class="rightConstructorPillowBlackP1">Черный</p>
+            <img class="rightConstructorPillowWhite" src="../assets/img/pillowWhite.png"/>
+            <p class="rightConstructorPillowWhiteP1">Белый</p>
+          </div>
+          <div>
+            <%= button_to "Заказать", {controller: "payments",action: "order"},{:remote => false, :id => 'lnk_more'} %>
+          </div>
+        </div>
+        <div class="constructorButtons">
+
+        </div>
+      </div>
+    </div>
   </div>
-  <div id="canvas-container" style="width: 500px; height: 500px;">
-    <canvas id="canvas" width="500" height="500" >
-    </canvas>
+
+  <div id="constructorUpload">
+    <div class="center">
+      <div class="constructorUpload">
+        <div class="center">
+          <button id="buttonUpload1">Загрузить фотографии</button>
+          <div class="rightConstructor12">
+            <p class="rightConstructor1P1">Шаг 2</p>
+            <p class="rightConstructor1P22">
+              Перетащите фотографию в нужное место на подушке
+            </p>
+          </div>
+          <%= form_for Painting.new do |f| %>
+              <%= f.file_field :image, multiple: true, name: "painting[image]", user_id: @user.id, id:"buttonUpload2" %>
+          <% end %>
+          <div id="paintings">
+            <%= render @paintings %>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
+
+
+
+  <div id="footer">
+    <div class="center">
+      <div class="footerLeft">
+        <a href="index.html"><img src="../assets/img/logo2.png"></a>
+        <p class="footerLeftP1">Фото-подушки</p>
+        <p class="footerLeftP2">Создание подушек с фотографиями</p>
+      </div>
+      <div class="footerCenter">
+        <p class="footerCenterP1"><b>ИНФОРМАЦИЯ</b></p>
+        <a class="md-trigger" data-modal="modal-9_1">Оплата</a>
+        <a class="md-trigger" data-modal="modal-8_1">Доставка</a>
+        <!--<a class="md-trigger" data-modal="modal-8_2">FAQ</a>-->
+        <a class="md-trigger" data-modal="modal-9_2">Контакты</a>
+      </div>
+      <div class="footerRight">
+        <p class="footerRightP1"><b>© 2015 FotoPodushki.by</b></p>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <script id="template-upload" type="text/x-tmpl">
-<div class="upload">
-{%=o.name%}
-<div class="progress"><div class="bar" style="width: 0%"></div></div>
-</div>
+    <div class="upload">
+        {%=o.name%}
+        <!--
+            <div class="progress">
+                <div class="bar" style="width: 0%"></div>
+             </div>
+         -->
+    </div>
+</script>
+
+<script>
+    $('div[href^="#"]').click(function () {
+        var target = $(this).attr('href');
+        $('html, body').animate({scrollTop: $(target).offset().top}, 800);
+        return false;
+    });
+</script>
+
+<script>
+    $('.constructorFoto').click(function () {
+        $('.leftConstructor2').css("background-image", "url(\"../assets/img/templates/"+$(this).attr('id')+".png\")");
+        var id = $(this).attr('id').replace("template", "");
+        $('#schema').css("background-image", "url(\"../assets/img/pillowCunstructor/schema"+id+".png\")");
+        $('#descriptionFoto1').text($(this).find('#descriptionFoto11').text());
+        $('#descriptionFoto2').text($(this).find('#descriptionFoto12').text());
+        return false;
+    });
+</script>
+
+<script>
+    $('#buttonUpload1').click(function () {
+        $('#buttonUpload2').click();
+        return false;
+    });
 </script>
