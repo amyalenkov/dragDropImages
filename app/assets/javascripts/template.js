@@ -132,7 +132,7 @@ function Template(templateDefault, canvas){
         img.setLeft(left);
 //        img.scale(scaleY)
         img.setScaleY(scaleY);
-        img.setScaleX(scaleX);
+//        img.setScaleX(scaleX);
         canvas.calcOffset();
         canvas.renderAll();
     }
