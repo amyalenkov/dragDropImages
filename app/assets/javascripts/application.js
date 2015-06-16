@@ -18,4 +18,6 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require template
 //= require paintings_upload
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
 
