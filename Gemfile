@@ -12,6 +12,8 @@ group :assets do
   gem 'therubyracer'
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'bootstrap-modal-rails'
 end
 
 gem 'jquery-rails', '3.0.4'

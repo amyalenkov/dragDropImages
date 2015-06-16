@@ -13,11 +13,22 @@ class PaymentsController < ApplicationController
   end
 
   def setSrcImage
+    p 'set src image'
     src = params[:srcImage]
     image_data = Base64.decode64(src['data:image/png;base64,'.length .. -1])
-    File.open("public/assets/"+cookies['image_user_token']+".png", 'wb') do |f|
+    image_path = "public/assets/"+cookies['image_user_token']+".png"
+    thumb_path = "public/assets/"+cookies['image_user_token']+"_thumb.png"
+    File.open(image_path, 'wb') do |f|
       f.write image_data
     end
+    resize_image image_path, thumb_path
     render nothing: true
+  end
+
+  def resize_image image_path, thumb_path
+    image = Magick::Image::read(image_path).first
+    image.resize_to_fit!(150)
+    image.write(thumb_path)
+    image.destroy!
   end
 end
