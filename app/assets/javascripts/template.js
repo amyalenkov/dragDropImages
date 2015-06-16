@@ -130,9 +130,8 @@ function Template(templateDefault, canvas){
     function setImageOnCanvas(img, top, left, scaleY, scaleX){
         img.setTop(top);
         img.setLeft(left);
-//        img.scale(scaleY)
         img.setScaleY(scaleY);
-//        img.setScaleX(scaleX);
+        img.setScaleX(scaleX * (img.height/img.width));
         canvas.calcOffset();
         canvas.renderAll();
     }
