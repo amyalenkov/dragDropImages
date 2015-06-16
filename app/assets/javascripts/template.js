@@ -131,7 +131,7 @@ function Template(templateDefault, canvas){
         img.setTop(top);
         img.setLeft(left);
         img.setScaleY(scaleY);
-        img.setScaleX(scaleX * (img.height/img.width));
+        img.setScaleX((img.width/img.height)*scaleY);
         canvas.calcOffset();
         canvas.renderAll();
     }
