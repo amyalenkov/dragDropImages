@@ -27,18 +27,16 @@ class PaintingsController < ApplicationController
   def update
     @painting = Painting.find(params[:id])
     if @painting.update_attributes(params[:painting])
-      redirect_to paintings_url, notice: "Painting was successfully updated."
+      redirect_to paintings_url
     else
       render :edit
     end
   end
 
   def destroy
-    puts "here in destroy #{params[:id]} - starting"
     @painting = Painting.find(params[:id])
     @painting.destroy
-    puts "here in destroy #{params[:id]} - done"
-    redirect_to paintings_url, notice: "Painting was successfully destroyed."
+    redirect_to paintings_url
   end
 
   private

@@ -1,4 +1,8 @@
 Gallery::Application.routes.draw do
+  get "canvases/index"
+
+  get "canvases/choise_canvas"
+
   resources :paintings do
     member do
       post :sendEmail
@@ -12,4 +16,7 @@ Gallery::Application.routes.draw do
   post 'payments/setSrcImage'
   post 'payments/afterPay'
   post 'static_pages/index'
+
+  get 'canvases/index'
+  post 'canvases/choice_canvas'
 end

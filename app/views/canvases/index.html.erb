@@ -1,0 +1,29 @@
+<h1>Canvases#index</h1>
+<div id="div_render">
+  <%= render partial: 'canvases/templates/template', locals: {template: @template} %>
+</div>
+<input class="templates" id="template1" value="template1" type="button">
+<input class="templates" id="template2" value="template2" type="button">
+
+<div id="constructorUpload">
+  <div class="center">
+    <div class="constructorUpload">
+      <div class="center">
+        <button id="buttonUpload1">Загрузить фотографии</button>
+        <div class="rightConstructor12">
+          <p class="rightConstructor1P1">Шаг 2</p>
+          <p class="rightConstructor1P22">
+            Перетащите фотографию в нужное место на подушке
+          </p>
+        </div>
+        <%= form_for Painting.new do |f| %>
+            <%= f.file_field :image, multiple: true, name: "painting[image]", user_id: @user.id, id:"buttonUpload2" %>
+        <% end %>
+        <div id="paintings">
+          <%= render @paintings %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

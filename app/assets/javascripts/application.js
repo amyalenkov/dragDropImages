@@ -20,4 +20,4 @@
 //= require paintings_upload
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
-
+//= require canvases
