@@ -1,10 +1,43 @@
-<h1>Canvases#index</h1>
-<div id="div_render">
-  <%= render partial: 'canvases/templates/template', locals: {template: @template} %>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
+
+<h1>Canvases#index</h1>
 <input class="templates" id="template1" value="template1" type="button">
 <input class="templates" id="template2" value="template2" type="button">
-
+<input class="templates" id="template3" value="template3" type="button">
+<input class="templates" id="template4" value="template4" type="button">
+<input class="templates" id="template5" value="template5" type="button">
+<input class="templates" id="template6" value="template6" type="button">
+<input class="templates" id="template7" value="template7" type="button">
+<input class="templates" id="template8" value="template8" type="button">
+<div id="div_render" style="float: left;">
+  <%= render partial: 'canvases/templates/template', locals: {template: @template} %>
+</div>
+<div id="result-canvas-container" style="width: 400px !important; height: 400px !important; float: left">
+  <canvas id="canvas_result" style="float:left; width: 400px !important; height: 400px !important;" width="400px" height="400px">
+  </canvas>
+</div>
 <div id="constructorUpload">
   <div class="center">
     <div class="constructorUpload">
@@ -22,8 +55,9 @@
         <div id="paintings">
           <%= render @paintings %>
         </div>
-
+        <!--<%= button_to "Заказать", {controller: "payments",action: "order"},{:remote => false, :id => 'order'} %>-->
       </div>
+      <input type="button" id="order" name="asdsd">
     </div>
   </div>
 </div>

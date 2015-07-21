@@ -21,3 +21,4 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require canvases
+//= require current_canvas

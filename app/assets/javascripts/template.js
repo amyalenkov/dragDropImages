@@ -1,6 +1,6 @@
 function Template(templateDefault, canvas){
     this.templateName = templateDefault;
-    this.canvas = canvas;
+    this.current_canvas = canvas;
     this.pushImageInTemplate = function(img, dropX, dropY){
         if(this.templateName == 'template1'){
             setTemplate(img, 2, 2, dropX, dropY);
