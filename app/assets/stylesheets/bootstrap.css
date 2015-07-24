@@ -5725,7 +5725,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1050;
+  z-index: 1049;
   display: none;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -5773,7 +5773,7 @@ button.close {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 1040;
+  z-index: 1030 !important;
   background-color: #000;
 }
 .modal-backdrop.fade {
