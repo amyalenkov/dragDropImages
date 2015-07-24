@@ -1,49 +1,145 @@
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+<div id="menuTop" style="margin-bottom: 25px;">
+  <div class="center">
+    <div class="menuTopClass">
+      <div class="menuTop">
+        <div class="tabletLogo">
+          <a href="index" class="menuTopAImg"><img src="../assets/img/logo.png"></a>
+          <a href="index.html" class="menuTopAText" style="text-decoration: none;">
+            <p class="font1">Фото-подушки</p>
+            <p class="font2">создание подушек с фотографиями</p>
+          </a>
+        </div>
+        <div class="tabletMenu">
+          <a href="#" class="menuTopA1" data-toggle="modal" data-target="#modal-1">Доставка</a>
+          <img class="menuTopImg" src="../assets/img/lineVertical.png">
+          <a href="#" class="menuTopA2" data-toggle="modal" data-target="#modal-2">Оплата</a>
+          <img class="menuTopImg" src="../assets/img/lineVertical.png">
+          <a href="#" class="menuTopA2" data-toggle="modal" data-target="#modal-3">Контакты</a>
+        </div>
+        <div class="tabletButton">
+          <%= link_to('Заказать звонок', paintings_index_path, method: :post, class: "menuTopButton") %>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<h1>Canvases#index</h1>
-<input class="templates" id="template1" value="template1" type="button">
-<input class="templates" id="template2" value="template2" type="button">
-<input class="templates" id="template3" value="template3" type="button">
-<input class="templates" id="template4" value="template4" type="button">
-<input class="templates" id="template5" value="template5" type="button">
-<input class="templates" id="template6" value="template6" type="button">
-<input class="templates" id="template7" value="template7" type="button">
-<input class="templates" id="template8" value="template8" type="button">
-<div id="div_render" style="float: left;">
-  <%= render partial: 'canvases/templates/template', locals: {template: @template} %>
+<div class="center">
+
+  <div id="slide">
+    <div class="center">
+      <div class="slide">
+        <div class="view-source">
+          <p class="hideBlockP1">Выберите расположение фоторгафий</p>
+          <div class="hideBlock">
+
+            <div class="rowConstructor">
+              <div class="constructorFoto templates" id="template1" value="template1" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor1.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema1.png"/>
+                <p class="constructorP1" id="descriptionFoto11">2 фото</p>
+                <p class="constructorP2 constructorP2Add" id="descriptionFoto12">2 равных фото</p>
+              </div>
+              <div class="constructorFoto templates" id="template2" value="template2" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor2.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema2.png"/>
+                <p class="constructorP1" id="descriptionFoto11">6 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">6 разных прямоугольников</p>
+              </div>
+              <div class="constructorFoto templates" id="template3" value="template3" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor3.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema3.png"/>
+                <p class="constructorP1" id="descriptionFoto11">13 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">1 большое и 12 маленьких</p>
+              </div>
+              <div class="constructorFoto templates" id="template4" value="template4" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor4.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema4.png"/>
+                <p class="constructorP1" id="descriptionFoto11">15 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">3 большое и 12 маленьких</p>
+              </div>
+            </div>
+
+            <div class="rowConstructor">
+              <div class="constructorFoto templates" id="template5" value="template5" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor5.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema5.png"/>
+                <p class="constructorP1" id="descriptionFoto11">2 х 2 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">4 равных квадрата</p>
+              </div>
+              <div class="constructorFoto templates" id="template6" value="template6" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema6.png"/>
+                <p class="constructorP1" id="descriptionFoto11">3 х 3 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">9 равных квадрата</p>
+              </div>
+              <div class="constructorFoto templates" id="template7" value="template7" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor7.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema7.png"/>
+                <p class="constructorP1" id="descriptionFoto11">4 х 4 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">16 равных квадрата</p>
+              </div>
+              <div class="constructorFoto templates" id="template8" value="template8" href="#scrollToForm">
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>
+                <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema8.png"/>
+                <p class="constructorP1" id="descriptionFoto11">5 х 5 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">25 равных квадрата</p>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="leftConstructor">
+    <div class="leftConstructor2">
+      <div id="scrollToForm"></div>
+      <div id="div_render" style="float: left; margin-left: 20px; margin-top: 15px;">
+        <%= render partial: 'canvases/templates/template', locals: {template: @template} %>
+      </div>
+
+      <div id="result-canvas-container" style="width: 400px !important; height: 400px !important; margin-top: -15px; margin-left: 490px;">
+        <canvas id="canvas_result" style="float:left; width: 400px !important; height: 400px !important;" width="400px" height="400px">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="rightConstructor">
+    <div class="rightConstructor1">
+      <p class="rightConstructor1P1">Шаг 1</p>
+      <p class="rightConstructor1P2">
+        Загрузите фото с устройства, используя соответствующую кнопку влевом нижнем углу страницы.
+      </p>
+    </div>
+    <div class="rightConstructor2">
+      <p class="rightConstructor2P1">1. Расположение фото:</p>
+      <div id="schema"></div>
+      <p class="rightConstructor2P2" id="descriptionFoto1">2 фото</p>
+      <p class="rightConstructor2P3" id="descriptionFoto2">2 горизонтальных фото</p>
+      <p class="rightConstructor2P1">2. Цвет обратной стороны подушки: </p>
+      <img class="rightConstructorPillowBlack" src="../assets/img/pillowBlack.png"/>
+      <p class="rightConstructorPillowBlackP1">Черный</p>
+      <img class="rightConstructorPillowWhite" src="../assets/img/pillowWhite.png"/>
+      <p class="rightConstructorPillowWhiteP1">Белый</p>
+      <a href="#" class="menuTopA1" data-toggle="modal" data-target="#modal-4">pop-up заказа</a>
+    </div>
+  </div>
+
+  <div class="constructorButtons">
+
+  </div>
 </div>
-<div id="result-canvas-container" style="width: 400px !important; height: 400px !important; float: left">
-  <canvas id="canvas_result" style="float:left; width: 400px !important; height: 400px !important;" width="400px" height="400px">
-  </canvas>
-</div>
+
 <div id="constructorUpload">
   <div class="center">
     <div class="constructorUpload">
       <div class="center">
         <button id="buttonUpload1">Загрузить фотографии</button>
-        <div class="rightConstructor12">
+        <div class="rightConstructor12 rightConstructor1Upload">
           <p class="rightConstructor1P1">Шаг 2</p>
           <p class="rightConstructor1P22">
             Перетащите фотографию в нужное место на подушке
@@ -55,9 +151,243 @@
         <div id="paintings">
           <%= render @paintings %>
         </div>
-        <!--<%= button_to "Заказать", {controller: "payments",action: "order"},{:remote => false, :id => 'order'} %>-->
+
       </div>
-      <input type="button" id="order" name="asdsd">
     </div>
   </div>
 </div>
+
+<div id="footer">
+  <div class="center">
+    <div class="footerLeft">
+      <a href="index.html"><img src="../assets/img/logo2.png"></a>
+      <p class="footerLeftP1">Фото-подушки</p>
+      <p class="footerLeftP2">Создание подушек с фотографиями</p>
+    </div>
+    <div class="footerCenter">
+      <p class="footerCenterP1"><b>ИНФОРМАЦИЯ</b></p>
+
+      <div class="tabletMenu">
+        <a href="#" class="menuTopA1 menuTopA1_2" data-toggle="modal" data-target="#modal-1">Доставка</a>
+        <img class="menuTopImg menuTopImg_n" src="../assets/img/lineVertical.png">
+        <a href="#" class="menuTopA2 menuTopA2_n" data-toggle="modal" data-target="#modal-2">Оплата</a>
+        <img class="menuTopImg menuTopImg_n" src="../assets/img/lineVertical.png">
+        <a href="#" class="menuTopA2 menuTopA2_n" data-toggle="modal" data-target="#modal-3">Контакты</a>
+      </div>
+
+    </div>
+    <div class="footerRight">
+      <p class="footerRightP1"><b>© 2015 FotoPodushki.by</b></p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
+
+<!--MODAL_WINDOWS-->
+<div class="modal fade" id="modal-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Доставка</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          * Заказ переходит на доставку сразу же после изготовления.<br>
+          Изготовление занимает 2 дня.<br>
+          Доставка по России<br>
+          Мы предлагаем два способа доставки по России.<br>
+          1) Отправлением 1-м классом Почты России. Доставка<br>
+          до ближайшего отделения почты. Срок доставки 5 - 9 рабочих дней.<br>
+          Стоимость доставки: 290р.<br>
+          2) Отправлением службы доставки EMS. Доставка до двери за 3-5 дней.<br>
+          Стоимость доставки: 790р.<br>
+          Все этапы оформления и доставки Вашего заказа сопровождаются смс информированием.<br>
+          Вы всегда в курсе всех событий, производимых с заказом.<br>
+          Доставка по Иркутску<br>
+
+          Доставку осуществляет наш курьер сразу после изготовления заказа (2 дня).<br>
+          Менеджер предварительно свяжется с Вами чтобы уточнить время и адрес для доставки.<br>
+          Доставка в другие страны<br>
+
+          Для отправления заказа в другие страны, свяжитесь, пожалуйста, с нашей службой<br>
+          поддержки по телефону (3952) 761-253 или по почте shop@daripodushki.ru.<br>
+          Мы найдем решение и предложим вам!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Способы оплаты</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          Наложенным платежом - оплата при получении заказа<br>
+          Наложенный платеж - это возможность оплаты заказа в<br>
+          отделении почты в момент его получения. При получении<br>
+          и оплате заказа, доставленного наложенным платежом,<br>
+          взимается плата по тарифу на пересылку внутренних<br>
+          простых почтовых переводов. Процент оплаты зависит<br>
+          от пересылаемой суммы и фактически составляет: 5% + 50 руб.<br>
+          В связи с этим просим Вас приготовиться к оплате этого сбора,<br>
+          если Вы выбираете Наложенный платёж как способ оплаты.<br>
+          Оплата посредством перевода на карту Сбербанка<br>
+          Этот способ избавит Вас от уплаты процента за наложенный<br>
+          платеж и заполнения дополнительных бумаг на почте. Реквизиты<br>
+          для оплаты вы увидите на шаге оформления заказа.<br></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Контакты</h4>
+      </div>
+      <div class="modal-body">
+        <p>Daripodushki.ru – это сервис, с помощью которого Вы сможете создать<br>
+          уникальную подушку с вашими фотографиями.<br>
+          Наша миссия – дать новый и увлекательный способ порадовать себя и своих<br>
+          близких людей оригинальным подарком и предметом интерьера.<br>
+          Для нас важно чтобы покупатель и получатель подарка остались довольны,<br>
+          поэтому наши подушки сделаны из качественных материалов, а картинка<br>
+          всегда останется в первоначальном виде. Мы гарантируем качество,<br>
+          поэтому готовы вернуть деньги, если вас что-то не устроит в нашем продукте.<br>
+          Контакты<br>
+          Коллектив сервиса Daripodushki.ru находится в г.Иркутске.<br>
+          Работаем и принимаем заказы каждый день 24 часа в сутки.<br>
+          Вы всегда можете связаться с нами по телефону: 8 (3952) 761-253<br>
+          Или по email: shop@daripodushki.ru<br>
+          Будем рады ответить на ваши вопросы!</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END_MODAL_WINDOWS-->
+
+<!-- форма заказа -->
+<div class="modal fade" id="modal-4">
+  <div class="modal-dialog modalOrder">
+    <div class="modal-content">
+
+      <div class="modal-header modalTitle">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Форма заказа</h4>
+        <div class="title">
+          <div class="leftTitle">
+            <div class="sketchFoto"></div>
+          </div>
+          <div class="rightTitle">
+            <h3>ОПИСАНИЕ:</h3>
+            <p class="titleText1">Количество подушек: </p>
+            <p class="titleText2">Упаковка из крафтовой бумаги в подарок</p>
+            <p class="titleText3">Цвет обратной стороны: </p>
+            <button class="btn btn-success" type="button" data-dismiss="modal">Создать еще</button>
+            <button class="btn btn-warning" type="button" data-dismiss="modal">Удалить подушку ?</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-body modalBody">
+        <div class="titleBody">
+          <center><h4>Заполните форму заказа</h4></center>
+
+          <p><b>Имя и фамилия</b> <input type="text" style="float: right; width: 75%; padding-left: 5px;" placeholder="Имя и Фамилия"></p>
+          <p class="textHepl1">Укажите имя и фамилию по паспорту для получения посылки</p><br>
+
+          <p><b>Телефон</b> <input type="text" style="float: right; margin-top: -20px; width: 60%; padding-left: 5px;" placeholder="+375 (29) 123-45-67"></p>
+          <p class="textHepl1">Позвоним для подтверждения заказа</p><br><br>
+
+          <p style="margin-top: -17px;"><b>Email</b> <input type="text" style="float: right; width: 45%; padding-left: 5px;" placeholder="example@mail.by"></p>
+          <p class="textHepl1">Вышлем трек-код заказа</p><br><br>
+
+          <p style="margin-top: -18px;"><b>Адрес доставки </b> <input type="text" style="float: right; width: 75%; padding-left: 5px;" placeholder="Адрес доставки: индекс, город, улица, дом, квартира"></p>
+          <p class="textHepl1">Например: 246000 г.Гомель ул.Советская д.95 кв.2</p><br>
+        </div>
+
+        <div class="modalTextBody">
+          <center><h4>Доставка</h4></center>
+          <div class="delivery1">
+            <p><input type="radio"/> <b>Бесплатная доставка</b></p>
+            <p>Доставка заказным почтовым отправлением.</p>
+            <p><b>Цена:</b> 0 рублей</p>
+            <p><b>Срок:</b> 3-5 дней</p>
+          </div>
+          <div class="delivery2">
+            <p><input type="radio"/> <b>Бесплатная доставка</b></p>
+            <p>Доставка заказным почтовым отправлением.</p>
+            <p><b>Цена:</b> 0 рублей</p>
+            <p><b>Срок:</b> 3-5 дней</p>
+          </div>
+        </div>
+
+        <div class="modalTextBody modalText">
+          <center><h4>Оплата</h4></center>
+          <div class="delivery1">
+            <p><input type="radio"/> <b>Наложенным платежом</b></p>
+            <p>Оплата заказа при получении.</p>
+          </div>
+          <div class="delivery2">
+            <p><input type="radio"/> <b>Наличными в Гомеле</b></p>
+            <p>Оплата нашему курьеру при получении.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-footer modalFooterLine">
+        <center><button class="btn btn-success buttonFooter" type="button" data-dismiss="modal">Подтвердить заказ</button></center>
+      </div>
+    </div>
+  </div>
+</div>
+<!--END_MODAL_WINDOWS-->
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('div[href^="#"]').click(function () {
+            var target = $(this).attr('href');
+            console.log(target);
+            $('html, body').animate({scrollTop: $(target).offset().top}, 800);
+            return false;
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.constructorFoto').click(function () {
+            $('.leftConstructor2').css("background-image", "url(\"../assets/img/templates/"+$(this).attr('id')+".png\")");
+            var id = $(this).attr('id').replace("template", "");
+            $('#schema').css("background-image", "url(\"../assets/img/pillowCunstructor/schema"+id+".png\")");
+            $('#descriptionFoto1').text($(this).find('#descriptionFoto11').text());
+            $('#descriptionFoto2').text($(this).find('#descriptionFoto12').text());
+            return false;
+        });
+    });
+</script>
+
+
+
+

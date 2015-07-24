@@ -17,8 +17,8 @@
 //= require jquery-fileupload/basic
 //= require jquery-fileupload/vendor/tmpl
 //= require template
-//= require paintings_upload
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
+//= require paintings_upload
 //= require canvases
 //= require current_canvas

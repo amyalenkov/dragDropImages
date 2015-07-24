@@ -1,0 +1,101 @@
+@media (min-width: 481px) and  (max-width: 768px){
+
+    .center{
+        width: 100%;
+    }
+
+    .menuTopClass{
+        width: 100%;
+    }
+
+    .tabletLogo, .tabletMenu, .tabletButton{
+        float: left;
+        width: 33%;
+    }
+
+    .tabletButton{
+        width: 25%;
+        float: right;
+    }
+
+    .menuTopAImg{
+        margin-left: 10px;
+    }
+
+    .menuTopA2{
+        margin-left: 10px;
+    }
+
+    .menuTopImg{
+        float: left;
+        margin-top: 28px;
+        margin-left: 10px;
+    }
+
+    .menuTopAText{
+        float: left;
+        margin-top: 18px;
+        margin-left: 10px;
+    }
+
+    .font1{
+        font-family: Heavy;
+        font-size: 22px;
+        color: #191919;
+        margin-top: -12px;
+    }
+
+    .font2{
+        font-size: 10px;
+        color: #191919;
+        margin-top: -12px;
+    }
+
+    .menuTopA1{
+        margin-left: 2%;
+    }
+
+    .menuTopButton{
+        float: right;
+        width: 165px;
+        height: 50px;
+        padding: 15px 0 0 36px;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 10px;
+        margin-right: 10px;
+        color: #ffffff;
+        text-decoration: none;
+        background: #fe496a url("img/phone.png") no-repeat 10px 15px;
+    }
+
+    .menuTopButton:hover{
+        cursor: pointer;
+        transition: 0.3s;
+        color: #ffffff;
+        text-decoration: none;
+        background: #fe3246 url("img/phone.png") no-repeat 10px 15px;
+    }
+
+    .menuTopButton:active{
+        cursor: pointer;
+        transition: 0.3s;
+        color: #ffffff;
+        text-decoration: none;
+        background: #fe162b url("img/phone.png") no-repeat 10px 15px;
+
+    }
+
+    .menuTopButton img{
+        float: left;
+        margin-top: 12px;
+    }
+
+    .menuTopButton p{
+        float: left;
+        font-size: 14px;
+        color: #ffffff;
+        margin-left: 10px;
+    }
+
+}

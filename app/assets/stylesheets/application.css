@@ -10,7 +10,9 @@
  *
  *= require_self
  *= require_tree .
- *= require bootstrap-modal
+ *= require bootstrap.css
+ *= require ../fonts/config/font-awesome.css
+
  */
 
 #draggable {
