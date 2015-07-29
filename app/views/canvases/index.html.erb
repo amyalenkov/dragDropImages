@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'paintings' %>
 <div id="menuTop" style="margin-bottom: 25px;">
   <div class="center">
     <div class="menuTopClass">
@@ -17,7 +18,7 @@
           <a href="#" class="menuTopA2" data-toggle="modal" data-target="#modal-3">Контакты</a>
         </div>
         <div class="tabletButton">
-          <%= link_to('Заказать звонок', paintings_index_path, method: :post, class: "menuTopButton") %>
+          <a href="#" class="menuTopButton" data-toggle="modal" data-target="#modal-5">Заказать звонок</a>
         </div>
       </div>
     </div>
@@ -182,109 +183,6 @@
   </div>
 </div>
 
-</div>
-
-
-
-<!--MODAL_WINDOWS-->
-<div class="modal fade" id="modal-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" data-dismiss="modal">X</button>
-        <h4 class="modal-title">Доставка</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          * Заказ переходит на доставку сразу же после изготовления.<br>
-          Изготовление занимает 2 дня.<br>
-          Доставка по России<br>
-          Мы предлагаем два способа доставки по России.<br>
-          1) Отправлением 1-м классом Почты России. Доставка<br>
-          до ближайшего отделения почты. Срок доставки 5 - 9 рабочих дней.<br>
-          Стоимость доставки: 290р.<br>
-          2) Отправлением службы доставки EMS. Доставка до двери за 3-5 дней.<br>
-          Стоимость доставки: 790р.<br>
-          Все этапы оформления и доставки Вашего заказа сопровождаются смс информированием.<br>
-          Вы всегда в курсе всех событий, производимых с заказом.<br>
-          Доставка по Иркутску<br>
-
-          Доставку осуществляет наш курьер сразу после изготовления заказа (2 дня).<br>
-          Менеджер предварительно свяжется с Вами чтобы уточнить время и адрес для доставки.<br>
-          Доставка в другие страны<br>
-
-          Для отправления заказа в другие страны, свяжитесь, пожалуйста, с нашей службой<br>
-          поддержки по телефону (3952) 761-253 или по почте shop@daripodushki.ru.<br>
-          Мы найдем решение и предложим вам!</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-2">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" data-dismiss="modal">X</button>
-        <h4 class="modal-title">Способы оплаты</h4>
-      </div>
-      <div class="modal-body">
-        <p>
-          Наложенным платежом - оплата при получении заказа<br>
-          Наложенный платеж - это возможность оплаты заказа в<br>
-          отделении почты в момент его получения. При получении<br>
-          и оплате заказа, доставленного наложенным платежом,<br>
-          взимается плата по тарифу на пересылку внутренних<br>
-          простых почтовых переводов. Процент оплаты зависит<br>
-          от пересылаемой суммы и фактически составляет: 5% + 50 руб.<br>
-          В связи с этим просим Вас приготовиться к оплате этого сбора,<br>
-          если Вы выбираете Наложенный платёж как способ оплаты.<br>
-          Оплата посредством перевода на карту Сбербанка<br>
-          Этот способ избавит Вас от уплаты процента за наложенный<br>
-          платеж и заполнения дополнительных бумаг на почте. Реквизиты<br>
-          для оплаты вы увидите на шаге оформления заказа.<br></p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="modal fade" id="modal-3">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button class="close" type="button" data-dismiss="modal">X</button>
-        <h4 class="modal-title">Контакты</h4>
-      </div>
-      <div class="modal-body">
-        <p>Daripodushki.ru – это сервис, с помощью которого Вы сможете создать<br>
-          уникальную подушку с вашими фотографиями.<br>
-          Наша миссия – дать новый и увлекательный способ порадовать себя и своих<br>
-          близких людей оригинальным подарком и предметом интерьера.<br>
-          Для нас важно чтобы покупатель и получатель подарка остались довольны,<br>
-          поэтому наши подушки сделаны из качественных материалов, а картинка<br>
-          всегда останется в первоначальном виде. Мы гарантируем качество,<br>
-          поэтому готовы вернуть деньги, если вас что-то не устроит в нашем продукте.<br>
-          Контакты<br>
-          Коллектив сервиса Daripodushki.ru находится в г.Иркутске.<br>
-          Работаем и принимаем заказы каждый день 24 часа в сутки.<br>
-          Вы всегда можете связаться с нами по телефону: 8 (3952) 761-253<br>
-          Или по email: shop@daripodushki.ru<br>
-          Будем рады ответить на ваши вопросы!</p>
-      </div>
-      <div class="modal-footer">
-        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--END_MODAL_WINDOWS-->
-
 <!-- форма заказа -->
 <div class="modal fade" id="modal-4">
   <div class="modal-dialog modalOrder">
@@ -358,6 +256,123 @@
       <div class="modal-footer modalFooterLine">
         <center><button class="btn btn-success buttonFooter" type="button" data-dismiss="modal">Подтвердить заказ</button></center>
       </div>
+
+    </div>
+  </div>
+</div>
+<!--END_MODAL_WINDOWS-->
+
+
+<!--MODAL_WINDOWS-->
+<div class="modal fade" id="modal-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Доставка</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          * Заказ переходит на доставку сразу же после изготовления.<br>
+          Изготовление занимает 2 дня.<br>
+          Доставка<br>
+          Мы предлагаем два способа доставки по России.<br>
+          1) Отправлением 1-м классом БелПочты. Доставка<br>
+          до ближайшего отделения почты. Срок доставки 5 - 9 рабочих дней.<br>
+          Стоимость доставки: 290р.<br>
+          2) Отправлением службы доставки EMS. Доставка до двери за 3-5 дней.<br>
+          Стоимость доставки: 790р.<br>
+          Все этапы оформления и доставки Вашего заказа сопровождаются смс информированием.<br>
+          Вы всегда в курсе всех событий, производимых с заказом.<br>
+          Доставка по Гомелю<br>
+
+          Доставку осуществляет наш курьер сразу после изготовления заказа (2 дня).<br>
+          Менеджер предварительно свяжется с Вами чтобы уточнить время и адрес для доставки.<br>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Способы оплаты</h4>
+      </div>
+      <div class="modal-body">
+        <p>
+          <b>Наложенным платежом</b> - оплата при получении заказа.<br>
+          <b>Наложенный платеж</b> - это возможность оплаты заказа в
+          отделении почты в момент его получения. При получении и оплате заказа, доставленного наложенным платежом,
+          взимается плата по тарифу на пересылку внутренних простых почтовых переводов.<br>
+          Процент оплаты зависит от пересылаемой суммы и фактически составляет: 5% + 50 руб.<br>
+          В связи с этим просим Вас приготовиться к оплате этого сбора, если Вы выбираете Наложенный платёж как способ оплаты.<br><br>
+          <b>Наличными курьеру</b> - при доставке курьером, вы может рассчитаться наличными.<br>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-3">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Контакты</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <p>
+            Фотоподушки.бел – это сервис, с помощью которого Вы сможете создать<br>
+            уникальную подушку с вашими фотографиями.<br>
+            Наша цель – дать новый и увлекательный способ порадовать себя и своих<br>
+            близких людей оригинальным подарком и предметом интерьера.<br>
+            Для нас важно чтобы покупатель и получатель подарка остались довольны,<br>
+            поэтому наши подушки сделаны из качественных материалов, а картинка<br>
+            всегда останется в первоначальном виде. Мы гарантируем качество,<br>
+            поэтому готовы вернуть деньги, если вас что-то не устроит в нашем продукте.<br><br>
+            Контакты<br>
+            Коллектив сервиса Фотоподушки.бел находится в г.Гомеле.<br>
+            Работаем и принимаем заказы каждый день 24 часа в сутки.<br>
+            Вы всегда можете связаться с нами по телефону: +375 (25) 934-02-84<br>
+            Или по email: shop@fotopodushki.by<br>
+            Будем рады ответить на ваши вопросы!
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" type="button" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-5">
+  <div class="modal-dialog sizeModalWindow">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Заказ обратного звонка</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <center>
+            <p><input type="text" class="inputZakaz" placeholder="Ваше Имя"/></p>
+            <p><input type="text" class="inputZakaz" placeholder="Контактный номер"/></p>
+            <p><textarea type="text" class="inputZakaz" placeholder="Комментарий"></textarea></p>
+            <center><button class="btn btn-danger btnZakaz" type="button" data-dismiss="modal">Перезвоните мне </button></center>
+          </center>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -388,6 +403,15 @@
     });
 </script>
 
+<script>
+    $('#buttonUpload1').click(function () {
+        $('#buttonUpload2').click();
+        return false;
+    });
+</script>
 
+<script id="template-upload" type="text/x-tmpl">
+    <div class="upload">
 
-
+    </div>
+</script>
