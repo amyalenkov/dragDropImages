@@ -94,6 +94,8 @@
       </div>
     </div>
   </div>
+</div>
+<div class="center">
 
   <div class="leftConstructor">
     <div class="leftConstructor2">
@@ -102,7 +104,7 @@
         <%= render partial: 'canvases/templates/template', locals: {template: @template} %>
       </div>
 
-      <div id="result-canvas-container" style="width: 400px !important; height: 400px !important; margin-top: -15px; margin-left: 490px;">
+      <div id="result-canvas-container" style="width: 400px !important; height: 400px !important; margin-top: -15px; margin-left: 390px;">
         <canvas id="canvas_result" style="float:left; width: 400px !important; height: 400px !important;" width="400px" height="400px">
         </canvas>
       </div>
@@ -130,9 +132,6 @@
     </div>
   </div>
 
-  <div class="constructorButtons">
-
-  </div>
 </div>
 
 <div id="constructorUpload">
@@ -190,74 +189,94 @@
 
       <div class="modal-header modalTitle">
         <button class="close" type="button" data-dismiss="modal">X</button>
-        <h4 class="modal-title">Форма заказа</h4>
-        <div class="title">
-          <div class="leftTitle">
-            <div class="sketchFoto"></div>
-          </div>
-          <div class="rightTitle">
-            <h3>ОПИСАНИЕ:</h3>
-            <p class="titleText1">Количество подушек: </p>
-            <p class="titleText2">Упаковка из крафтовой бумаги в подарок</p>
-            <p class="titleText3">Цвет обратной стороны: </p>
-            <button class="btn btn-success" type="button" data-dismiss="modal">Создать еще</button>
-            <button class="btn btn-warning" type="button" data-dismiss="modal">Удалить подушку ?</button>
-          </div>
+
+        <%= form_tag(controller: "payments" ,action: "afterPay", method: "post") do %>
+            <h4 class="modal-title">Форма заказа</h4>
+            <div class="title">
+              <div class="leftTitle">
+                <div class="sketchFoto">
+                  <%= image_tag (cookies['image_user_token']+"_thumb.png") %>
+                </div>
+              </div>
+              <div class="rightTitle">
+                <h3>ОПИСАНИЕ:</h3>
+                <p class="titleText1">Количество подушек:
+
+                  <b><span class="col" id="col" name='count'>1</span></b>
+                  <input type="button" id="plus_count" class="plus_count" value="+"/>
+                  <input type="button" id="minus_count" class="minus_count" value=" - "/>
+
+                </p>
+                <p class="titleText2">Упаковка из крафтовой бумаги в подарок</p>
+                <p class="titleText3">Цвет обратной стороны: </p>
+                <p class="titleText3">Цена: <b><span name='money' id="result"> 300 </span> 000 рублей</b>
+                </p>
+                <button class="btn btn-success" type="button" data-dismiss="modal">Создать еще</button>
+                <button class="btn btn-warning" type="button" data-dismiss="modal">Удалить подушку ?</button>
+              </div>
+            </div>
+            </div>
+
+            <div class="modal-body modalBody">
+              <div class="titleBody">
+                <center><h4>Заполните форму заказа</h4></center>
+
+                <p><b>Имя и фамилия</b>
+                  <input name='fio' class= 'fio' placeholder='Имя и Фамилия' type="text"/></p>
+                <p class="textHepl1">Укажите имя и фамилию по паспорту для получения посылки</p><br>
+
+                <p><b>Телефон</b> <input name='phone' type="text" style="float: right; margin-top: -20px; width: 60%; padding-left: 5px;" placeholder="+375 (29) 123-45-67"></p>
+                <p class="textHepl1">Позвоним для подтверждения заказа</p><br><br>
+
+                <p style="margin-top: -17px;"><b>Email</b> <input name='email' type="text" style="float: right; width: 45%; padding-left: 5px;" placeholder="example@mail.by"></p>
+                <p class="textHepl1">Вышлем трек-код заказа</p><br><br>
+
+                <p style="margin-top: -18px;"><b>Адрес доставки </b> <input name='address' type="text" style="float: right; width: 75%; padding-left: 5px;" placeholder="Адрес доставки: индекс, город, улица, дом, квартира"></p>
+                <p class="textHepl1">Например: 246000 г.Гомель ул.Советская д.95 кв.2</p><br>
+              </div>
+
+              <div class="modalTextBody">
+                <center><h4>Доставка</h4></center>
+                <div class="delivery1">
+                  <!--<p><input type="radio" id="delivery"/> <b>Бесплатная доставка</b></p>-->
+                  <p><%= radio_button_tag 'delivery', 'post delivery'%> <b>Бесплатная доставка</b></p>
+                  <p>Доставка заказным почтовым отправлением.</p>
+                  <p><b>Цена:</b> 0 рублей</p>
+                  <p><b>Срок:</b> 3-5 дней</p>
+                </div>
+                <div class="delivery2">
+                  <!--<p><input type="radio" id="delivery"/> <b>Бесплатная доставка</b></p>-->
+                  <p><%= radio_button_tag 'delivery', 'free delivery'%> <b>Бесплатная доставка</b></p>
+                  <p>Доставка заказным почтовым отправлением.</p>
+                  <p><b>Цена:</b> 0 рублей</p>
+                  <p><b>Срок:</b> 3-5 дней</p>
+                </div>
+              </div>
+
+              <div class="modalTextBody modalText">
+                <center><h4>Оплата</h4></center>
+                <div class="delivery1">
+                  <!--<p><input type="radio"/> <b>Наложенным платежом</b></p>-->
+                  <p><%= radio_button_tag 'cash', 'post'%> <b>Наложенным платежом</b></p>
+                  <p>Оплата заказа при получении.</p>
+                </div>
+                <div class="delivery2">
+                  <!--<p><input type="radio"/> <b>Наличными в Гомеле</b></p>-->
+                  <p><%= radio_button_tag 'cash', 'man'%> <b>Наличными в Гомеле</b></p>
+                  <p>Оплата нашему курьеру при получении.</p>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="modal-footer modalFooterLine">
+              <center><button class="btn btn-success buttonFooter" type="button" data-dismiss="modal">Подтвердить заказ</button></center>
+              <%= submit_tag("Оплатить") %>
+
+            </div>
+        <% end %>
+
         </div>
-      </div>
-
-      <div class="modal-body modalBody">
-        <div class="titleBody">
-          <center><h4>Заполните форму заказа</h4></center>
-
-          <p><b>Имя и фамилия</b> <input type="text" style="float: right; width: 75%; padding-left: 5px;" placeholder="Имя и Фамилия"></p>
-          <p class="textHepl1">Укажите имя и фамилию по паспорту для получения посылки</p><br>
-
-          <p><b>Телефон</b> <input type="text" style="float: right; margin-top: -20px; width: 60%; padding-left: 5px;" placeholder="+375 (29) 123-45-67"></p>
-          <p class="textHepl1">Позвоним для подтверждения заказа</p><br><br>
-
-          <p style="margin-top: -17px;"><b>Email</b> <input type="text" style="float: right; width: 45%; padding-left: 5px;" placeholder="example@mail.by"></p>
-          <p class="textHepl1">Вышлем трек-код заказа</p><br><br>
-
-          <p style="margin-top: -18px;"><b>Адрес доставки </b> <input type="text" style="float: right; width: 75%; padding-left: 5px;" placeholder="Адрес доставки: индекс, город, улица, дом, квартира"></p>
-          <p class="textHepl1">Например: 246000 г.Гомель ул.Советская д.95 кв.2</p><br>
-        </div>
-
-        <div class="modalTextBody">
-          <center><h4>Доставка</h4></center>
-          <div class="delivery1">
-            <p><input type="radio"/> <b>Бесплатная доставка</b></p>
-            <p>Доставка заказным почтовым отправлением.</p>
-            <p><b>Цена:</b> 0 рублей</p>
-            <p><b>Срок:</b> 3-5 дней</p>
-          </div>
-          <div class="delivery2">
-            <p><input type="radio"/> <b>Бесплатная доставка</b></p>
-            <p>Доставка заказным почтовым отправлением.</p>
-            <p><b>Цена:</b> 0 рублей</p>
-            <p><b>Срок:</b> 3-5 дней</p>
-          </div>
-        </div>
-
-        <div class="modalTextBody modalText">
-          <center><h4>Оплата</h4></center>
-          <div class="delivery1">
-            <p><input type="radio"/> <b>Наложенным платежом</b></p>
-            <p>Оплата заказа при получении.</p>
-          </div>
-          <div class="delivery2">
-            <p><input type="radio"/> <b>Наличными в Гомеле</b></p>
-            <p>Оплата нашему курьеру при получении.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="modal-footer modalFooterLine">
-        <center><button class="btn btn-success buttonFooter" type="button" data-dismiss="modal">Подтвердить заказ</button></center>
-      </div>
-
-    </div>
   </div>
 </div>
 <!--END_MODAL_WINDOWS-->
@@ -368,7 +387,7 @@
           <center>
             <p><input type="text" class="inputZakaz" placeholder="Ваше Имя"/></p>
             <p><input type="text" class="inputZakaz" placeholder="Контактный номер"/></p>
-            <p><textarea type="text" class="inputZakaz" placeholder="Комментарий"></textarea></p>
+            <p><textarea type="text" class="inputZakaz" style="width: 195px;" placeholder="Комментарий"></textarea></p>
             <center><button class="btn btn-danger btnZakaz" type="button" data-dismiss="modal">Перезвоните мне </button></center>
           </center>
         </div>
@@ -410,8 +429,28 @@
     });
 </script>
 
+<script>
+    $('#minus_count').click(function () {
+        var col = parseInt($('#col').text());
+        var newCol=0;
+        if(col != 1){
+            newCol = col - 1;
+            $('#col').text(newCol);
+            $('#result').text(300 * newCol);
+        }
+        else{}
+        return false;
+    });
+    $('#plus_count').click(function () {
+        var col = parseInt($('#col').text());
+        var newCol = col + 1;
+        $('#col').text(newCol);
+        $('#result').text(300 * newCol);
+        return false;
+    });;
+</script>
+
 <script id="template-upload" type="text/x-tmpl">
     <div class="upload">
-
     </div>
 </script>

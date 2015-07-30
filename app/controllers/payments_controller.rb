@@ -5,11 +5,24 @@ class PaymentsController < ApplicationController
   def afterPay
     p params[:cost_title]
     email = 'dsuschinsky@gmail.com'
-    image_src = "public/assets/"+cookies['image_user_token']+".png"
-    cost = params['cost'] + '*' + params['count'] + '=' + params['finalCost']
-    ImageMailer.welcome_email(email, image_src,
-      params['fio'], params['phone'], params['email'], params['address'], params['post'], params['comment'],
-      cost).deliver
+    # image_src = "public/assets/"+cookies['image_user_token']+".png"
+    fio = params[:fio]
+    cost = params[:money]
+    phone = params[:phone]
+    emailUser = params[:email]
+    address = params[:address]
+    count = params[:count]
+    money = params[:money]
+
+    case params[:delivery]
+      when "post delivery"
+      when "free delivery"
+      when nil
+        @req_message = "request type is not selected"
+    end
+
+    # ImageMailer.welcome_email(email, image_src, fio, phone, emailUser, address, count, money).deliver
+    ImageMailer.welcome_email(email, fio, cost, phone, emailUser, address, count, money).deliver
   end
 
   def setSrcImage
