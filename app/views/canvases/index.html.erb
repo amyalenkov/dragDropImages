@@ -84,12 +84,17 @@
                 <p class="constructorP2" id="descriptionFoto12">16 равных квадрата</p>
               </div>
               <div class="constructorFoto templates" id="template8" value="template8" href="#scrollToForm">
-                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>
+                <img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor8.png"/>
                 <img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema8.png"/>
-                <p class="constructorP1" id="descriptionFoto11">5 х 5 фото</p>
-                <p class="constructorP2" id="descriptionFoto12">25 равных квадрата</p>
+                <p class="constructorP1" id="descriptionFoto11">1 фото</p>
+                <p class="constructorP2" id="descriptionFoto12">1 квадрат</p>
               </div>
-
+              <!--<div class="constructorFoto templates" id="template8" value="template8" href="#scrollToForm">-->
+                <!--<img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>-->
+                <!--<img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema8Old.png"/>-->
+                <!--<p class="constructorP1" id="descriptionFoto11">5 х 5 фото</p>-->
+                <!--<p class="constructorP2" id="descriptionFoto12">25 равных квадрата</p>-->
+              <!--</div>-->
             </div>
 
           </div>
@@ -405,7 +410,6 @@
     $(document).ready(function() {
         $('div[href^="#"]').click(function () {
             var target = $(this).attr('href');
-            console.log(target);
             $('html, body').animate({scrollTop: $(target).offset().top}, 800);
             return false;
         });
@@ -416,6 +420,9 @@
     $(document).ready(function() {
         $('.constructorFoto').click(function () {
             $('.leftConstructor2').css("background-image", "url(\"../assets/img/templates/"+$(this).attr('id')+".png\")");
+            var element = document.getElementsByClassName('canvas-container');
+            console.log(element);
+//            $('.canvas-container').elem.style.width="100px";
             var id = $(this).attr('id').replace("template", "");
             $('#schema').css("background-image", "url(\"../assets/img/pillowCunstructor/schema"+id+".png\")");
             $('#descriptionFoto1').text($(this).find('#descriptionFoto11').text());
