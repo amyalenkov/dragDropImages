@@ -75,20 +75,20 @@ $(document).ready(function () {
         currentTemplate.templateName = 'template8';
     });
 
-    $('#order').click(function(){
-        canvas.deactivateAll().renderAll();
-        canvasSrc = document.getElementById('canvas').toDataURL();
-        $.ajax({
-            url: '/payments/setSrcImage',
-            type: 'POST',
-            data: {
-                srcImage: canvasSrc
-            },
-            success: function(data){
-                $('.button_to').submit();
-            }
-        })
-    });
+//    $('#order').click(function(){
+//        canvas.deactivateAll().renderAll();
+//        canvasSrc = document.getElementById('canvas').toDataURL();
+//        $.ajax({
+//            url: '/payments/setSrcImage',
+//            type: 'POST',
+//            data: {
+//                srcImage: canvasSrc
+//            },
+//            success: function(data){
+//                $('.button_to').submit();
+//            }
+//        })
+//    });
 });
 
 function addAllImages(){

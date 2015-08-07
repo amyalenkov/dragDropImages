@@ -1,4 +1,7 @@
-<%= javascript_include_tag 'paintings' %>
+<!--<div>-->
+  <!--<canvas id="canvas_result" width="400px" height="400px">-->
+  <!--</canvas>-->
+<!--</div>-->
 <div id="menuTop" style="margin-bottom: 25px;">
   <div class="center">
     <div class="menuTopClass">
@@ -128,7 +131,7 @@
       <p class="rightConstructorPillowBlackP1">Черный</p>
       <img class="rightConstructorPillowWhite" src="../assets/img/pillowWhite.png"/>
       <p class="rightConstructorPillowWhiteP1">Белый</p>
-      <a href="#" class="menuTopA1" data-toggle="modal" data-target="#modal-4">pop-up заказа</a>
+      <a href="#" id="order" class="menuTopA1" data-toggle="modal" data-target="#modal-4">pop-up заказа</a>
     </div>
   </div>
 
@@ -195,7 +198,7 @@
             <div class="title">
               <div class="leftTitle">
                 <div class="sketchFoto">
-                  <%= image_tag (cookies['image_user_token']+"_thumb.png") %>
+                  <%= image_tag(cookies['image_user_token']+"_thumb.png", id: "image_thumb") %>
                 </div>
               </div>
               <div class="rightTitle">
@@ -203,7 +206,8 @@
                 <p class="titleText1">Количество подушек:
 
                   <b><span class="col" id="col" name='count'>1</span></b>
-                  <input type="button" id="plus_count" class="plus_count" value="+"/>
+                  <input name='count' id='count' class= 'count' type="hidden" value="1"/></p>
+                <input type="button" id="plus_count" class="plus_count" value="+"/>
                   <input type="button" id="minus_count" class="minus_count" value=" - "/>
 
                 </p>
@@ -211,6 +215,7 @@
                 <p class="titleText3">Цвет обратной стороны: </p>
                 <p class="titleText3">Цена: <b><span name='money' id="result"> 300 </span> 000 рублей</b>
                 </p>
+                <input name='money' id='money' class= 'money' type="hidden" value="300000"/></p>
                 <button class="btn btn-success" type="button" data-dismiss="modal">Создать еще</button>
                 <button class="btn btn-warning" type="button" data-dismiss="modal">Удалить подушку ?</button>
               </div>
@@ -396,8 +401,6 @@
   </div>
 </div>
 <!--END_MODAL_WINDOWS-->
-
-
 <script type="text/javascript">
     $(document).ready(function() {
         $('div[href^="#"]').click(function () {
@@ -429,26 +432,6 @@
     });
 </script>
 
-<script>
-    $('#minus_count').click(function () {
-        var col = parseInt($('#col').text());
-        var newCol=0;
-        if(col != 1){
-            newCol = col - 1;
-            $('#col').text(newCol);
-            $('#result').text(300 * newCol);
-        }
-        else{}
-        return false;
-    });
-    $('#plus_count').click(function () {
-        var col = parseInt($('#col').text());
-        var newCol = col + 1;
-        $('#col').text(newCol);
-        $('#result').text(300 * newCol);
-        return false;
-    });;
-</script>
 
 <script id="template-upload" type="text/x-tmpl">
     <div class="upload">

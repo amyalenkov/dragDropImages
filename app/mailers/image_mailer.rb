@@ -2,9 +2,9 @@ class ImageMailer < ActionMailer::Base
   # default from: 'stmy999@gmail.com'
   default from: 'dsuschinsky@gmail.com'
 
-  # def welcome_email(email, image, fio, phone, user_email, address)
-  def welcome_email(email, fio, cost, phone, email_user, address, count, money)
-    # attachments['image.jpg'] = File.read(image)
+  def welcome_email(email, fio, cost, phone, email_user, address, count, money, image)
+  # def welcome_email(email, fio, cost, phone, email_user, address, count, money)
+    attachments['image.jpg'] = File.read(image)
     @fio = fio
     @cost = cost
     @phone = phone

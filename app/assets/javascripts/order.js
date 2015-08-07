@@ -1,26 +1,24 @@
 $(document).ready(function () {
-    $("#count").click(function(){
-        var number =  $(this).val();
-        var oneCost = $('#cost').val();
-        var finalCost =  (+number) * (+oneCost);
-        $('#finalCost').val(finalCost);
-    })
-    $('#plus_count').click(function(){
-        var oldNumber =  $("#count").val();
-        var newNumber = 1 + (+oldNumber);
-        var oneCost = $('#cost').val();
-        var finalCost =  (+newNumber) * (+oneCost);
-        $('#finalCost').val(finalCost);
-        $('#count').val(newNumber);
-    });
-    $('#minus_count').click(function(){
-        var oldNumber =  $("#count").val();
-        if (oldNumber != 1){
-            var newNumber = (+oldNumber) - 1;
-            var oneCost = $('#cost').val();
-            var finalCost =  (+newNumber) * (+oneCost);
-            $('#finalCost').val(finalCost);
-            $('#count').val(newNumber);
+    var amount_for_one = 300;
+    $('#minus_count').click(function () {
+        var col = parseInt($('#col').text());
+        var newCol=0;
+        if(col != 1){
+            newCol = col - 1;
+            $('#col').text(newCol);
+            $('#count').val(newCol);
+            $('#result').text(amount_for_one * newCol);
+            $('#money').val(amount_for_one * newCol +'000');
         }
+        return false;
+    });
+    $('#plus_count').click(function () {
+        var col = parseInt($('#col').text());
+        var newCol = col + 1;
+        $('#col').text(newCol);
+        $('#count').val(newCol);
+        $('#result').text(amount_for_one * newCol);
+        $('#money').val(amount_for_one * newCol +'000');
+        return false;
     });
 });
