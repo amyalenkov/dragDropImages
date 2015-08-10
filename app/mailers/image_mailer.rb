@@ -14,4 +14,11 @@ class ImageMailer < ActionMailer::Base
     @money = money
     mail(to: email, subject: 'Welcome to My Awesome Site').deliver
   end
+
+  def welcome_email_order_call(email, name, phone, text_area)
+    @name = name
+    @phone = phone
+    @text_area = text_area
+    mail(to: email, subject: 'Welcome to My Awesome Site').deliver
+  end
 end
