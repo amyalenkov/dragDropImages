@@ -43,11 +43,56 @@ function Current_canvas(div_id){
         var img = document.getElementsByClassName('img_dragging')[0];
         var srcImg = img.src.replace(new RegExp("thumb_", "g"), "");
         fabric.Image.fromURL(srcImg, function(oImg) {
-//        currentTemplate.pushImageInTemplate(oImg, e.layerX, e.layerY);
+            oImg.set({top:5, left:5});
+
+            var stylestemp = $('#'+canvasId).attr('style').split(';');
+            var styles = {};
+            var c = '';
+            for (var x = 0, l = stylestemp.length; x < l; x++) {
+                c = stylestemp[x].split(':');
+                styles[$.trim(c[0])] = $.trim(c[1]);
+            }
+            var oldWidth = parseInt(styles.width.replace('px !important', ''));
+            var oldHeight = parseInt(styles.height.replace('px !important', ''));
+
+            var imgWidth = oImg.width;
+            var imgHeight = oImg.height;
+
+            console.log('size canvas: ');
+            console.log(oldWidth);
+            console.log(oldHeight);
+            console.log('-------------');
+
+            console.log('size image: ');
+            console.log(oImg.width);
+            console.log(oImg.height);
+            console.log('-------------');
+
+            var factorY = oldHeight/imgHeight;
+            var factorX = oldWidth/imgWidth;
+
+            console.log('factors: ');
+            console.log(factorX);
+            console.log(factorY);
+            console.log('-------------');
+
+//            oImg.scaleX = parseFloat(factorX);
+//            oImg.scaleY = parseFloat(factorY);
+            oImg.scaleX = 0.4;
+            oImg.scaleY = 0.4;
+
+//            oImg.height = oImg.height*factorY;
+//            oImg.width = oImg.width*factorX;
+
+            console.log('new size image: ');
+            console.log(oImg.width);
+            console.log(oImg.height);
+            console.log('-------------');
+
             canvas.add(oImg);
         });
-        canvas.calcOffset();
         canvas.renderAll();
+        canvas.calcOffset();
         return false;
     }
 

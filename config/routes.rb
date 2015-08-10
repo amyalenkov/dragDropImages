@@ -13,8 +13,10 @@ Gallery::Application.routes.draw do
   post 'paintings/sendEmail'
   post 'paintings/index'
   post 'payments/order'
+  post 'call/order'
   post 'payments/setSrcImage'
   post 'payments/afterPay'
+  post 'call/order_call'
   post 'static_pages/index'
 
   get 'canvases/index'
