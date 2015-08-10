@@ -76,13 +76,8 @@ function Current_canvas(div_id){
             console.log(factorY);
             console.log('-------------');
 
-//            oImg.scaleX = parseFloat(factorX);
-//            oImg.scaleY = parseFloat(factorY);
             oImg.scaleX = 0.4;
             oImg.scaleY = 0.4;
-
-//            oImg.height = oImg.height*factorY;
-//            oImg.width = oImg.width*factorX;
 
             console.log('new size image: ');
             console.log(oImg.width);

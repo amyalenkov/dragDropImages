@@ -230,7 +230,7 @@ SMALL_MOBILE: max 360px, min 280px.
     color: #ffffff;
     text-decoration: none;
     background: #fe162b url("img/phone.png") no-repeat 10px 15px;
-
+    outline: none;
 }
 
 .menuTopButton img{
@@ -949,12 +949,15 @@ SMALL_MOBILE: max 360px, min 280px.
     margin-top: 70px;
     margin-left: 40px;
     background: url("img/constructorBg.png") no-repeat -10px 0;
+
 }
 
 .leftConstructor2{
     margin-top: 0;
     margin-left: 0;
-    background: url("img/templates/template1.png") no-repeat 0 0;
+    background-image: url("img/templates/template1.png");
+    background-position:  25px 20px;
+    background-size: 90%;
 }
 
 .rightConstructor1, .rightConstructor12{
@@ -1380,7 +1383,7 @@ SMALL_MOBILE: max 360px, min 280px.
 .delivery1, .delivery2{
     float: left;
     width: 45%;
-    height: 150px;
+    height: 120px;
     text-align: center;
 }
 
@@ -1398,6 +1401,46 @@ SMALL_MOBILE: max 360px, min 280px.
 
 .buttonFooter{
     text-align: center;
+}
+
+.inputZakaz{
+    padding: 5px 10px;
+}
+
+.btnZakaz{
+    height: 45px;
+    width: 199px !important;
+    font-size: 18px !important;
+    margin-top: 25px;
+}
+
+.sizeModalWindow{
+    width: 35% !important;
+}
+.plus_count{
+    margin-left: 15px;
+}
+
+.plus_count, .minus_count{
+    border-radius: 15%;
+    color: #ffffff;
+    background-color: #21A0A3;
+    outline: none;
+    border: none;
+}
+
+.fio{
+    float: right;
+    width: 75%;
+    padding-left: 5px;
+}
+
+#validName, #validPhone{
+    margin-top: 10px;
+    margin-left: 9px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
 }
 
 /*END_ORDER*/

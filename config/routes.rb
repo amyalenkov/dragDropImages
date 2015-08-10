@@ -18,7 +18,6 @@ Gallery::Application.routes.draw do
   post 'payments/afterPay'
   post 'call/order_call'
   post 'static_pages/index'
-
   get 'canvases/index'
   post 'canvases/choice_canvas'
 end

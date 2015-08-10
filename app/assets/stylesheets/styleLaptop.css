@@ -16,7 +16,6 @@
     .menuTopA1{
         margin-left: 40px;
     }
-
     .font1{
         font-family: Heavy;
         font-size: 24px;
@@ -189,9 +188,9 @@
 
     .qualityPillow{
         float: left;
-        width: 400px;
         height: 450px;
-        margin-left: 50px;
+        margin-left: 0;
+        width: 50%;
         background: url("img/pillow3.png") no-repeat center;
     }
 
@@ -225,8 +224,43 @@
 
     .qualityPeople{
         float: left;
-        margin-left: 50px;
-        margin-top: 80px;
+        margin-left: 5%;
+        margin-top: 70px;
+        width: 45%;
+    }
+
+    .faFonts{
+        float: left;
+        font-size: 45px !important;
+        color: #194B4C;
+    }
+
+    .qualityPeopleText1{
+        float: left;
+        margin-left: 25px;
+        padding-top: 5px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .qualityPeopleText11{
+        margin-left: 20px;
+    }
+
+    .fa3{
+        margin-left: 5px;
+    }
+
+    .qualityPeopleText13{
+        margin-left: 20px;
+    }
+
+    .qualityPeopleText2{
+        float: left;
+        margin-left: 0;
+        margin-top: 0;
+        margin-bottom: 10px;
+        font-size: 15px;
     }
 
 
@@ -468,6 +502,7 @@
     }
 
     .leftConstructor, .leftConstructor2, .rightConstructor{
+        float: left;
         height: auto;
         width: 50%;
     }
@@ -480,7 +515,7 @@
 
     .leftConstructor2{
         width: 100%;
-        background: url("img/templates/template5.png") no-repeat 0 0;
+        background: url("img/templates/template1.png") no-repeat 0 0;
         background-size: contain;
     }
 
@@ -533,7 +568,7 @@
         margin-left: 40px;
         margin-top: 15px;
         margin-right: 15px;
-        background-image: url("img/pillowCunstructor/schema5.png");
+        background-image: url("img/pillowCunstructor/schema1.png");
     }
 
     /*END_CONSTRUCTOR*/
