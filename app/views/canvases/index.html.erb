@@ -18,7 +18,7 @@
           <a href="#" class="menuTopA2" data-toggle="modal" data-target="#modal-3">Контакты</a>
         </div>
         <div class="tabletButton">
-          <a href="#" class="menuTopButton" id="zakazZvonka" data-toggle="modal" data-target="#modal-5">Заказать звонок</a>
+          <a href="#" class="menuTopButton" data-toggle="modal" data-target="#modal-5">Заказать звонок</a>
         </div>
       </div>
     </div>
@@ -87,10 +87,10 @@
                 <p class="constructorP2" id="descriptionFoto12">1 квадрат</p>
               </div>
               <!--<div class="constructorFoto templates" id="template8" value="template8" href="#scrollToForm">-->
-              <!--<img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>-->
-              <!--<img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema8Old.png"/>-->
-              <!--<p class="constructorP1" id="descriptionFoto11">5 х 5 фото</p>-->
-              <!--<p class="constructorP2" id="descriptionFoto12">25 равных квадрата</p>-->
+                <!--<img class="constructorFotoImg1" src="../assets/pillowCunstructor/constructor6.png"/>-->
+                <!--<img class="constructorFotoImg2" src="../assets/pillowCunstructor/schema8Old.png"/>-->
+                <!--<p class="constructorP1" id="descriptionFoto11">5 х 5 фото</p>-->
+                <!--<p class="constructorP2" id="descriptionFoto12">25 равных квадрата</p>-->
               <!--</div>-->
             </div>
 
@@ -195,7 +195,7 @@
       <div class="modal-header modalTitle">
         <button class="close" type="button" data-dismiss="modal">X</button>
 
-        <%= form_tag(controller: 'payments', action: 'afterPay', method: 'post') do %>
+        <%= form_tag(controller: "payments" ,action: "afterPay", method: "post") do %>
             <h4 class="modal-title">Форма заказа</h4>
             <div class="title">
               <div class="leftTitle">
@@ -243,12 +243,14 @@
               <div class="modalTextBody">
                 <center><h4>Доставка</h4></center>
                 <div class="delivery1">
+                  <!--<p><input type="radio" id="delivery"/> <b>Бесплатная доставка</b></p>-->
                   <p><%= radio_button_tag 'delivery', 'post delivery'%> <b>Бесплатная доставка</b></p>
                   <p>Доставка заказным почтовым отправлением.</p>
                   <p><b>Цена:</b> 0 рублей</p>
                   <p><b>Срок:</b> 3-5 дней</p>
                 </div>
                 <div class="delivery2">
+                  <!--<p><input type="radio" id="delivery"/> <b>Бесплатная доставка</b></p>-->
                   <p><%= radio_button_tag 'delivery', 'free delivery'%> <b>Бесплатная доставка</b></p>
                   <p>Доставка заказным почтовым отправлением.</p>
                   <p><b>Цена:</b> 0 рублей</p>
@@ -259,10 +261,12 @@
               <div class="modalTextBody modalText">
                 <center><h4>Оплата</h4></center>
                 <div class="delivery1">
+                  <!--<p><input type="radio"/> <b>Наложенным платежом</b></p>-->
                   <p><%= radio_button_tag 'cash', 'post'%> <b>Наложенным платежом</b></p>
                   <p>Оплата заказа при получении.</p>
                 </div>
                 <div class="delivery2">
+                  <!--<p><input type="radio"/> <b>Наличными в Гомеле</b></p>-->
                   <p><%= radio_button_tag 'cash', 'man'%> <b>Наличными в Гомеле</b></p>
                   <p>Оплата нашему курьеру при получении.</p>
                 </div>
@@ -380,26 +384,24 @@
   <div class="modal-dialog sizeModalWindow">
     <div class="modal-content">
       <div class="modal-header">
-        <%= form_tag(controller: 'call', action: 'order_call', method: 'post') do %>
-            <button class="close" type="button" data-dismiss="modal">X</button>
-            <h4 class="modal-title">Заказ обратного звонка</h4>
-            </div>
-            <div class="modal-body">
-              <div class="modal-body">
-                <center>
-                  <p><input type="text" id="validateName" class="inputZakaz" name="name_zakaz" placeholder="*Ваше Имя"/><span id="validName"></span></p>
-                  <p><input type="text" id="validatePhone" class="inputZakaz" name="phone_zakaz" placeholder="*Контактный номер"/><span id="validPhone"></span></p>
-                  <p><textarea id="zakaz3" class="inputZakaz" name="text_area_zakaz" style="width: 195px;" placeholder="Комментарий"></textarea></p>
-                  <p><span style="color: red;"> * </span> обязательные поля для ввода</p>
-                  <%= submit_tag 'Перезвоните мне', :id => 'send_button', :class => 'btn btn-danger btnZakaz' %>
-                </center>
-              </div>
-            </div>
-        <% end %>
+        <button class="close" type="button" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Заказ обратного звонка</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-body">
+          <center>
+            <p><input type="text" class="inputZakaz" placeholder="Ваше Имя"/></p>
+            <p><input type="text" class="inputZakaz" placeholder="Контактный номер"/></p>
+            <p><textarea type="text" class="inputZakaz" style="width: 195px;" placeholder="Комментарий"></textarea></p>
+            <center><button class="btn btn-danger btnZakaz" type="button" data-dismiss="modal">Перезвоните мне </button></center>
+          </center>
         </div>
+      </div>
+    </div>
   </div>
 </div>
 <!--END_MODAL_WINDOWS-->
+
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -416,6 +418,8 @@
         $('.constructorFoto').click(function () {
             $('.leftConstructor2').css("background-image", "url(\"../assets/img/templates/"+$(this).attr('id')+".png\")");
             var element = document.getElementsByClassName('canvas-container');
+            console.log(element);
+//            $('.canvas-container').elem.style.width="100px";
             var id = $(this).attr('id').replace("template", "");
             $('#schema').css("background-image", "url(\"../assets/img/pillowCunstructor/schema"+id+".png\")");
             $('#descriptionFoto1').text($(this).find('#descriptionFoto11').text());
@@ -457,7 +461,3 @@
     <div class="upload">
     </div>
 </script>
-
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet"/>

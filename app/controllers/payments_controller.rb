@@ -3,13 +3,12 @@ class PaymentsController < ApplicationController
   end
 
   def afterPay
-    p params[:cost_title]
     email = 'dsuschinsky@gmail.com'
-    # image_src = "public/assets/"+cookies['image_user_token']+".png"
+    image_src = "public/assets/"+cookies['image_user_token']+".png"
     fio = params[:fio]
     cost = params[:money]
     phone = params[:phone]
-    emailUser = params[:email]
+    email_user = params[:email]
     address = params[:address]
     count = params[:count]
     money = params[:money]
@@ -21,12 +20,11 @@ class PaymentsController < ApplicationController
         @req_message = "request type is not selected"
     end
 
-    # ImageMailer.welcome_email(email, image_src, fio, phone, emailUser, address, count, money).deliver
-    ImageMailer.welcome_email(email, fio, cost, phone, emailUser, address, count, money).deliver
+    # ImageMailer.welcome_email(email, image_src, fio, phone, email_user, address, count, money).deliver
+    ImageMailer.welcome_email(email, fio, cost, phone, email_user, address, count, money, image_src).deliver
   end
 
   def setSrcImage
-    p 'set src image'
     src = params[:srcImage]
     image_data = Base64.decode64(src['data:image/png;base64,'.length .. -1])
     image_path = "public/assets/"+cookies['image_user_token']+".png"

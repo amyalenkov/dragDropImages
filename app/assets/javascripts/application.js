@@ -22,5 +22,3 @@
 //= require paintings_upload
 //= require canvases
 //= require current_canvas
-//= require validForm.js
-
