@@ -133,7 +133,7 @@
       <p class="rightConstructorPillowBlackP1">Черный</p>
       <img class="rightConstructorPillowWhite" src="../assets/img/pillowWhite.png"/>
       <p class="rightConstructorPillowWhiteP1">Белый</p>
-      <a href="#" class="menuTopA1" data-toggle="modal" data-target="#modal-4">pop-up заказа</a>
+      <a href="#" id="order" class="menuTopA1" data-toggle="modal" data-target="#modal-4">pop-up заказа</a>
     </div>
   </div>
 
@@ -200,7 +200,7 @@
             <div class="title">
               <div class="leftTitle">
                 <div class="sketchFoto">
-                  <%= image_tag (cookies['image_user_token']+"_thumb.png") %>
+                  <%= image_tag(cookies['image_user_token']+"_thumb.png", id: "image_thumb") %>
                 </div>
               </div>
               <div class="rightTitle">
@@ -208,9 +208,10 @@
                 <p class="titleText1">Количество подушек:
 
                   <b><span class="col" id="col" name='count'>1</span></b>
+                  <input name='count' id='count' class= 'count' type="hidden" value="1"/></p>
                   <input type="button" id="plus_count" class="plus_count" value="+"/>
                   <input type="button" id="minus_count" class="minus_count" value=" - "/>
-
+                  <input name='money' id='money' class= 'money' type="hidden" value="300000"/></p>
                 </p>
                 <p class="titleText2">Упаковка из крафтовой бумаги в подарок</p>
                 <p class="titleText3">Цвет обратной стороны: </p>
