@@ -1,12 +1,12 @@
 /**
  * Created by amyalenkov on 6/25/15.
  */
-function Current_canvas(div_id){
-    var canvasId = 'canvas_'+div_id;
+function Current_canvas(div_id) {
+    var canvasId = 'canvas_' + div_id;
     var canvas = new fabric.Canvas(canvasId);
     this.current_canvas = canvas;
 
-    this.currrentAddDropEventForCanvas = function addDropEventForCanvas(){
+    this.currrentAddDropEventForCanvas = function addDropEventForCanvas() {
         var canvasContainer = document.getElementById(div_id);
         canvasContainer.addEventListener('dragenter', handleDragEnter, false);
         canvasContainer.addEventListener('dragover', handleDragOver, false);
@@ -38,57 +38,90 @@ function Current_canvas(div_id){
         if (e.stopPropagation) {
             e.stopPropagation(); // stops the browser from redirecting.
         }
-        if(e.preventDefault) { e.preventDefault(); }
+        if (e.preventDefault) {
+            e.preventDefault();
+        }
 
         var img = document.getElementsByClassName('img_dragging')[0];
         var srcImg = img.src.replace(new RegExp("thumb_", "g"), "");
-        fabric.Image.fromURL(srcImg, function(oImg) {
-            oImg.set({top:5, left:5});
 
-            var stylestemp = $('#'+canvasId).attr('style').split(';');
-            var styles = {};
-            var c = '';
-            for (var x = 0, l = stylestemp.length; x < l; x++) {
-                c = stylestemp[x].split(':');
-                styles[$.trim(c[0])] = $.trim(c[1]);
-            }
-            var oldWidth = parseInt(styles.width.replace('px !important', ''));
-            var oldHeight = parseInt(styles.height.replace('px !important', ''));
+        drop_img_in_div(srcImg, div_id);
 
-            var imgWidth = oImg.width;
-            var imgHeight = oImg.height;
-
-            console.log('size canvas: ');
-            console.log(oldWidth);
-            console.log(oldHeight);
-            console.log('-------------');
-
-            console.log('size image: ');
-            console.log(oImg.width);
-            console.log(oImg.height);
-            console.log('-------------');
-
-            var factorY = oldHeight/imgHeight;
-            var factorX = oldWidth/imgWidth;
-
-            console.log('factors: ');
-            console.log(factorX);
-            console.log(factorY);
-            console.log('-------------');
-
-            oImg.scaleX = 0.4;
-            oImg.scaleY = 0.4;
-
-            console.log('new size image: ');
-            console.log(oImg.width);
-            console.log(oImg.height);
-            console.log('-------------');
-
-            canvas.add(oImg);
-        });
-        canvas.renderAll();
-        canvas.calcOffset();
+//        fabric.Image.fromURL(srcImg, function(oImg) {
+//            oImg.set({top:5, left:5});
+//
+//            var stylestemp = $('#'+canvasId).attr('style').split(';');
+//            var styles = {};
+//            var c = '';
+//            for (var x = 0, l = stylestemp.length; x < l; x++) {
+//                c = stylestemp[x].split(':');
+//                styles[$.trim(c[0])] = $.trim(c[1]);
+//            }
+//            var oldWidth = parseInt(styles.width.replace('px !important', ''));
+//            var oldHeight = parseInt(styles.height.replace('px !important', ''));
+//
+//            var imgWidth = oImg.width;
+//            var imgHeight = oImg.height;
+//
+//            console.log('size canvas: ');
+//            console.log(oldWidth);
+//            console.log(oldHeight);
+//            console.log('-------------');
+//
+//            console.log('size image: ');
+//            console.log(oImg.width);
+//            console.log(oImg.height);
+//            console.log('-------------');
+//
+//            var factorY = oldHeight/imgHeight;
+//            var factorX = oldWidth/imgWidth;
+//
+//            console.log('factors: ');
+//            console.log(factorX);
+//            console.log(factorY);
+//            console.log('-------------');
+//
+//            oImg.scaleX = 0.4;
+//            oImg.scaleY = 0.4;
+//
+//            console.log('new size image: ');
+//            console.log(oImg.width);
+//            console.log(oImg.height);
+//            console.log('-------------');
+//
+//            canvas.add(oImg);
+//        });
+//        canvas.renderAll();
+//        canvas.calcOffset();
         return false;
+    };
+
+    function drop_img_in_div(srcImg, div_id) {
+        var image = document.createElement("img");
+        var div = document.getElementById(div_id);
+        var stylestemp = $('#' + div_id).attr('style').split(';');
+        var styles = {};
+        var c = '';
+        for (var x = 0, l = stylestemp.length; x < l; x++) {
+            c = stylestemp[x].split(':');
+            styles[$.trim(c[0])] = $.trim(c[1]);
+        }
+        var oldWidth = parseInt(styles.width.replace('px !important', ''));
+        var oldHeight = parseInt(styles.height.replace('px !important', ''));
+        image.setAttribute("src", srcImg);
+        var factorX = oldWidth / image.width;
+        var factorY = oldHeight / image.height;
+        var newWidth = factorY * image.width;
+        var newHeight = factorY * image.height;
+        image.setAttribute("height", newHeight);
+        image.setAttribute("width", newWidth);
+        image.setAttribute("draggable", "true");
+        image.setAttribute("class", "image_in_div");
+        div.appendChild(image);
+        $(image).draggable({
+            containment: "#"+div_id,
+            scroll: false
+        });
     }
 
 }

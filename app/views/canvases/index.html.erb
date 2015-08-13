@@ -108,11 +108,6 @@
       <div id="div_render" style="float: left; margin-left: 20px; margin-top: 15px;">
         <%= render partial: 'canvases/templates/template', locals: {template: @template} %>
       </div>
-
-      <div id="result-canvas-container" style="width: 400px !important; height: 400px !important; margin-top: -15px; margin-left: 390px;">
-        <canvas id="canvas_result" style="float:left; width: 400px !important; height: 400px !important;" width="400px" height="400px">
-        </canvas>
-      </div>
     </div>
   </div>
 
@@ -405,6 +400,12 @@
   </div>
 </div>
 <!--END_MODAL_WINDOWS-->
+
+
+<div id="result-canvas-container" style="width: 4000px !important; height: 4000px !important; margin-left: 1390px;">
+<canvas id="canvas_result" style="margin-top: 4500px !important; bottom: 0; width: 4000px !important; height: 4000px !important;" width="4000px" height="4000px">
+</canvas>
+</div>
 
 
 <script type="text/javascript">
