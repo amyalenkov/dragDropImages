@@ -1377,7 +1377,7 @@ SMALL_MOBILE: max 360px, min 280px.
     font-size: 12px;
     color: #979797;
     margin-top: -5px;
-    margin-right: 5px;
+    margin-right: 30px;
 }
 
 .delivery1, .delivery2{
@@ -1430,14 +1430,27 @@ SMALL_MOBILE: max 360px, min 280px.
 }
 
 .fio{
-    float: right;
-    width: 75%;
+    width: 70%;
     padding-left: 5px;
+    margin-left: 20px;
+}
+
+.phone, .email, .address{
+    padding-left: 5px;
+    margin-left: 20px;
 }
 
 #validName, #validPhone{
     margin-top: 10px;
     margin-left: 9px;
+    position: absolute;
+    width: 16px;
+    height: 16px;
+}
+
+#validFio, #validPhoneZakaz, #validEmail, #validAdress {
+    margin-top: 7px;
+    margin-left: 8px;
     position: absolute;
     width: 16px;
     height: 16px;

@@ -105,6 +105,123 @@ $(document).ready(function() {
         }
     });
 
+// валидация для формы заказа
+    $('#zakaz').click(function() {
+        document.getElementById("post_button").disabled = true
+    });
+
+    $("#fio").keyup(function(){
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+
+        if(name != 0){
+            if(isValidName(name) && name.length > 1)
+            {
+                $("#validFio").css({
+                    "background-image": "url('../assets/img/ok.png')"
+                });
+                if(phone.length > 6){
+                    document.getElementById("send_button").disabled = false;
+                }
+
+                else if(email.length > 4){
+                    document.getElementById("send_button").disabled = false;
+                }
+
+                else if(address.length > 4){
+                    document.getElementById("send_button").disabled = false;
+                }
+            }
+            else{
+                $("#validFio").css({
+                    "background-image": "url('../assets/img/error.png')"
+                });
+                document.getElementById("send_button").disabled = true;
+            }
+
+        } else {
+            $("#validFio").css({
+                "background-image": "../assets/img/error.png"
+            });
+            document.getElementById("send_button").disabled = true;
+        }
+    });
+
+    $("#validateName").focusin(function(){
+        var name = $("#validateName").val();
+        var phone = $("#validatePhone").val();
+        if(name > 1){
+            $("#validName").css({
+                "background-image": "url('../assets/img/ok.png')"
+            });
+            if(phone.length > 6){
+                document.getElementById("send_button").disabled = false;
+            }
+            else{
+                document.getElementById("send_button").disabled = true;
+            }
+        }
+        else{
+            $("#validName").css({
+                "background-image": "url('../assets/img/error.png')"
+            });
+            document.getElementById("send_button").disabled = true;
+        }
+    });
+
+    $("#validatePhone").keyup(function(){
+        var phone = $("#validatePhone").val();
+        var name = $("#validateName").val();
+        if(phone != 0)
+        {
+            if(isValidPhone(phone) && phone.length > 6)
+            {
+                $("#validPhone").css({
+                    "background-image": "url('../assets/img/ok.png')"
+                });
+                if(name > 1){
+                    document.getElementById("send_button").disabled = false;
+                }
+                else{
+                    document.getElementById("send_button").disabled = true;
+                }
+            } else {
+                $("#validPhone").css({
+                    "background-image": "url('../assets/img/error.png')"
+                });
+                document.getElementById("send_button").disabled = true;
+            }
+        } else {
+            $("#validPhone").css({
+                "background-image": "../assets/img/error.png"
+            });
+            document.getElementById("send_button").disabled = true;
+        }
+    });
+
+    $("#validatePhone").focusin(function(){
+        var name = $("#validateName").val();
+        var phone = $("#validatePhone").val();
+        if(isValidPhone(phone) && phone.length > 6){
+            $("#validPhone").css({
+                "background-image": "url('../assets/img/ok.png')"
+            });
+            if(name > 1){
+                document.getElementById("send_button").disabled = false;
+            }
+            else{
+                document.getElementById("send_button").disabled = true;
+            }
+        }
+        else{
+            $("#validPhone").css({
+                "background-image": "url('../assets/img/error.png')"
+            });
+            document.getElementById("send_button").disabled = true;
+        }
+    });
 });
 
 function isValidEmailAddress(emailAddress) {
