@@ -106,8 +106,9 @@ $(document).ready(function() {
     });
 
 // валидация для формы заказа
-    $('#zakaz').click(function() {
-        document.getElementById("post_button").disabled = true
+    $('#order').click(function() {
+        document.getElementById("post_button").disabled = true;
+        console.log('click #order');
     });
 
     $("#fio").keyup(function(){
@@ -122,106 +123,229 @@ $(document).ready(function() {
                 $("#validFio").css({
                     "background-image": "url('../assets/img/ok.png')"
                 });
-                if(phone.length > 6){
-                    document.getElementById("send_button").disabled = false;
+                if(phone.length > 6 && email.length > 4 && address.length > 4){
+                    document.getElementById("post_button").disabled = false;
                 }
-
-                else if(email.length > 4){
-                    document.getElementById("send_button").disabled = false;
-                }
-
-                else if(address.length > 4){
-                    document.getElementById("send_button").disabled = false;
+                else{
+                    document.getElementById("post_button").disabled = true;
                 }
             }
             else{
                 $("#validFio").css({
                     "background-image": "url('../assets/img/error.png')"
                 });
-                document.getElementById("send_button").disabled = true;
+                document.getElementById("post_button").disabled = true;
             }
 
         } else {
             $("#validFio").css({
-                "background-image": "../assets/img/error.png"
+                "background-image": "url('../assets/img/error.png')"
             });
-            document.getElementById("send_button").disabled = true;
+            document.getElementById("post_button").disabled = true;
         }
     });
-
-    $("#validateName").focusin(function(){
-        var name = $("#validateName").val();
-        var phone = $("#validatePhone").val();
+    $("#fio").focusin(function(){
+        console.log('i valid #fio');
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
         if(name > 1){
-            $("#validName").css({
+            $("#validFio").css({
                 "background-image": "url('../assets/img/ok.png')"
             });
-            if(phone.length > 6){
-                document.getElementById("send_button").disabled = false;
+
+            if(phone.length > 6 && email.length > 4 && address.length > 4){
+                document.getElementById("post_button").disabled = false;
             }
             else{
-                document.getElementById("send_button").disabled = true;
+                document.getElementById("post_button").disabled = true;
             }
         }
         else{
-            $("#validName").css({
+            $("#validFio").css({
                 "background-image": "url('../assets/img/error.png')"
             });
-            document.getElementById("send_button").disabled = true;
+            document.getElementById("post_button").disabled = true;
         }
     });
 
-    $("#validatePhone").keyup(function(){
-        var phone = $("#validatePhone").val();
-        var name = $("#validateName").val();
-        if(phone != 0)
-        {
+    $("#phone").keyup(function(){
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+
+        if(phone != 0){
             if(isValidPhone(phone) && phone.length > 6)
             {
-                $("#validPhone").css({
+                $("#validPhoneZakaz").css({
                     "background-image": "url('../assets/img/ok.png')"
                 });
-                if(name > 1){
-                    document.getElementById("send_button").disabled = false;
+                if(name.length > 1 && email.length > 4 && address.length > 4){
+                    document.getElementById('post_button').disabled = false;
                 }
                 else{
-                    document.getElementById("send_button").disabled = true;
+                    document.getElementById('post_button').disabled = true;
                 }
-            } else {
-                $("#validPhone").css({
-                    "background-image": "url('../assets/img/error.png')"
-                });
-                document.getElementById("send_button").disabled = true;
-            }
-        } else {
-            $("#validPhone").css({
-                "background-image": "../assets/img/error.png"
-            });
-            document.getElementById("send_button").disabled = true;
-        }
-    });
-
-    $("#validatePhone").focusin(function(){
-        var name = $("#validateName").val();
-        var phone = $("#validatePhone").val();
-        if(isValidPhone(phone) && phone.length > 6){
-            $("#validPhone").css({
-                "background-image": "url('../assets/img/ok.png')"
-            });
-            if(name > 1){
-                document.getElementById("send_button").disabled = false;
             }
             else{
-                document.getElementById("send_button").disabled = true;
+                $("#validPhoneZakaz").css({
+                    "background-image": "url('../assets/img/error.png')"
+                });
+                document.getElementById("post_button").disabled = true;
+            }
+
+        } else {
+            $("#validPhoneZakaz").css({
+                "background-image": "url('../assets/img/error.png')"
+            });
+            document.getElementById("post_button").disabled = true;
+        }
+    });
+    $("#phone").focusin(function(){
+        console.log('i valid #fio');
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+        if(phone > 6){
+            $("#validPhoneZakaz").css({
+                "background-image": "url('../assets/img/ok.png')"
+            });
+
+            if(name.length > 1 && email.length > 4 && address.length > 4){
+                document.getElementById("post_button").disabled = false;
+            }
+            else{
+                document.getElementById("post_button").disabled = true;
             }
         }
         else{
-            $("#validPhone").css({
+            $("#validPhoneZakaz").css({
                 "background-image": "url('../assets/img/error.png')"
             });
-            document.getElementById("send_button").disabled = true;
+            document.getElementById("post_button").disabled = true;
         }
     });
+
+    $("#email").keyup(function(){
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+
+        if(email != 0){
+            if(isValidEmailAddress(email))
+            {
+                $("#validEmail").css({
+                    "background-image": "url('../assets/img/ok.png')"
+                });
+
+                if(phone.length > 6 && name.length > 1 && address.length > 4){
+                    document.getElementById("post_button").disabled = false;
+                }
+                else{
+                    document.getElementById("post_button").disabled = true;
+                }
+            }
+            else{
+                $("#validEmail").css({
+                    "background-image": "url('../assets/img/error.png')"
+                });
+                document.getElementById("post_button").disabled = true;
+            }
+
+        } else {
+            $("#validEmail").css({
+                "background-image": "url('../assets/img/error.png')"
+            });
+            document.getElementById("post_button").disabled = true;
+        }
+    });
+    $("#email").focusin(function(){
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+        if(email != 0 && isValidEmailAddress(email)){
+            $("#validEmail").css({
+                "background-image": "url('../assets/img/ok.png')"
+            });
+
+            if(phone.length > 6 && name.length > 1 && address.length > 4){
+                document.getElementById("post_button").disabled = false;
+            }
+            else{
+                document.getElementById("post_button").disabled = true;
+            }
+        }
+        else{
+            $("#validEmail").css({
+                "background-image": "url('../assets/img/error.png')"
+            });
+            document.getElementById("post_button").disabled = true;
+        }
+    });
+
+    $("#address").keyup(function(){
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+
+        if(address != 0){
+            if(address.length > 4)
+            {
+                $("#validAddress").css({
+                    "background-image": "url('../assets/img/ok.png')"
+                });
+                if(phone.length > 6 && email.length > 4 && name.length > 1){
+                    document.getElementById("post_button").disabled = false;
+                }
+                else{
+                    document.getElementById("post_button").disabled = true;
+                }
+            }
+            else{
+                $("#validAddress").css({
+                    "background-image": "url('../assets/img/error.png')"
+                });
+                document.getElementById("post_button").disabled = true;
+            }
+
+        } else {
+            $("#validAddress").css({
+                "background-image": "url('../assets/img/error.png')"
+            });
+            document.getElementById("post_button").disabled = true;
+        }
+    });
+    $("#address").focusin(function(){
+        var name = $("#fio").val();
+        var phone = $("#phone").val();
+        var email = $("#email").val();
+        var address = $("#address").val();
+        if(address > 4){
+            $("#validAddress").css({
+                "background-image": "url('../assets/img/ok.png')"
+            });
+
+            if(phone.length > 6 && email.length > 4 && name.length > 1){
+                document.getElementById("post_button").disabled = false;
+            }
+            else{
+                document.getElementById("post_button").disabled = true;
+            }
+        }
+        else{
+            $("#validAddress").css({
+                "background-image": "url('../assets/img/error.png')"
+            });
+            document.getElementById("post_button").disabled = true;
+        }
+    });
+
 });
 
 function isValidEmailAddress(emailAddress) {

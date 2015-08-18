@@ -1448,8 +1448,8 @@ SMALL_MOBILE: max 360px, min 280px.
     height: 16px;
 }
 
-#validFio, #validPhoneZakaz, #validEmail, #validAdress {
-    margin-top: 7px;
+#validFio, #validPhoneZakaz, #validEmail, #validAddress {
+    margin-top: 5px;
     margin-left: 8px;
     position: absolute;
     width: 16px;
